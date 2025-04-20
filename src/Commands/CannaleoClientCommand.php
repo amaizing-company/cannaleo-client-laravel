@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace AmaizingCompany\CannaleoClient\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class CannaleoClientCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'cannaleo-client-laravel';
 
     public $description = 'My command';
 

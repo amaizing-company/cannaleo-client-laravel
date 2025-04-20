@@ -1,0 +1,41 @@
+{
+    "error": false,
+    "message": "Result test catalog!",
+    "data": {
+        "catalog": [
+            {
+                "id": "testid",
+                "ansayId": "ndMO4kGfM9k6kSvSd2F5",
+                "name": "Testproduct",
+                "genetic": "Sativa",
+                "country": "Niederlande",
+                "thc": 22,
+                "cbd": 0.9,
+                "price": 8.95,
+                "pharmacy_name": "Test Pharmacy",
+                "pharmacy_domain": "demo.example",
+                "pharmacy_id": 4,
+                "availibility": "1",
+                "category": "flower",
+                "manufacturer": "Demo Pharmacy GmbH",
+                "grower": "",
+                "dominance": "",
+                "terpenes": [
+                    "Terpinolen",
+                    "Limonen",
+                    "Beta-Caryophyllen",
+                    "Myrcen",
+                    "Cis-Ocimen",
+                    "Beta-2-Pinen",
+                    "Alpha-Guaien",
+                    "Gamma-Cadinen",
+                    "Trans-Bergamoten",
+                    "Trans-β-Farnesen"
+                ],
+                "irradiated": 1,
+                "strain": "Afina"
+            }
+        ],
+        "updated_at": "1745077777075"
+    }
+}

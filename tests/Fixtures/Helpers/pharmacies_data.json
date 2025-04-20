@@ -1,0 +1,24 @@
+{
+    "error": false,
+    "message": "Result test pharmacies!",
+    "data": {
+        "pharmacies": [
+            {
+                "id": 1,
+                "cannabis_pharmacy_name": "Demo Medicon-Apotheke",
+                "official_name": "",
+                "domain": "test.demo",
+                "email": "",
+                "phone_number": "",
+                "street": "",
+                "plz": "",
+                "city": "",
+                "shipping": "no",
+                "express": "no",
+                "local_courier": "no",
+                "pickup": "no"
+            }
+        ],
+        "updated_at": "1745081441960"
+    }
+}

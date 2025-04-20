@@ -1,5 +1,5 @@
 <?php
 
-use VendorName\Skeleton\Tests\TestCase;
+use AmaizingCompany\CannaleoClient\Tests\ApiTestCase;
 
 uses(TestCase::class)->in(__DIR__);
