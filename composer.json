@@ -1,22 +1,22 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "amaizing-company/cannaleo-client-laravel",
+    "description": "Cannaleo api client package for laravel.",
     "keywords": [
-        ":vendor_name",
+        "Amaizing Company",
         "laravel",
-        ":package_slug"
+        "cannaleo-client-laravel"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/amaizing-company/cannaleo-client-laravel",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Sandro Rümmler",
+            "email": "sruemmler@hashbaby.de",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.4",
+        "php": "^8.3||^8.4",
         "spatie/laravel-package-tools": "^1.16",
         "illuminate/contracts": "^10.0||^11.0||^12.0"
     },
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "AmaizingCompany\\CannaleoClient\\": "src/",
+            "AmaizingCompany\\CannaleoClient\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "AmaizingCompany\\CannaleoClient\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -63,10 +63,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "AmaizingCompany\\CannaleoClient\\CannaleoClientServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "CannaleoClient": "AmaizingCompany\\CannaleoClient\\Facades\\CannaleoClient"
             }
         }
     },
