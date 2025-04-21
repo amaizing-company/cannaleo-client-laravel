@@ -1,3 +1,5 @@
 <?php
 
-uses(TestCase::class)->in(__DIR__);
+use AmaizingCompany\CannaleoClient\Tests\ApiTestCase;
+
+uses(ApiTestCase::class)->in(__DIR__ . '/Feature/Api');
