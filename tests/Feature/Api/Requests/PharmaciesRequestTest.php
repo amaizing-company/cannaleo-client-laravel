@@ -7,14 +7,14 @@ use Illuminate\Support\Collection;
 pest()->group('api', 'api-requests');
 
 beforeEach(function () {
-    $this->request = new PharmaciesRequest();
+    $this->request = new PharmaciesRequest;
 });
 
-it ('can be initiated', function () {
+it('can be initiated', function () {
     expect($this->request)->toBeInstanceOf(PharmaciesRequest::class);
 });
 
-it ('can send request and receive response', function () {
+it('can send request and receive response', function () {
     $this->fakeHttpResponses();
 
     $response = $this->request->send();

@@ -2,7 +2,6 @@
 
 namespace AmaizingCompany\CannaleoClient\Api\Requests;
 
-use AmaizingCompany\CannaleoClient\Facades\CannaleoClient;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 

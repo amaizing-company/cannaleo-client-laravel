@@ -22,28 +22,44 @@ class ProductResponseObject extends DataResponseObject
         'dominance' => 'dominance',
         'terpenes' => 'terpenes',
         'irradiated' => 'irradiated',
-        'strain' =>  'strain',
+        'strain' => 'strain',
 
     ];
 
     protected string $id;
 
     protected string $name;
+
     protected ?string $genetic = null;
+
     protected ?string $country = null;
+
     protected int|float $thc;
+
     protected int|float $cbd;
+
     protected int $price = 0;
+
     protected string $pharmacyName;
+
     protected string $pharmacyDomain;
+
     protected int $pharmacyId;
+
     protected bool $availability;
+
     protected string $category;
+
     protected string $manufacturer;
+
     protected ?string $grower = null;
+
     protected ?string $dominance = null;
+
     protected array $terpenes;
+
     protected bool $irradiated;
+
     protected ?string $strain = null;
 
     public function getId(): string

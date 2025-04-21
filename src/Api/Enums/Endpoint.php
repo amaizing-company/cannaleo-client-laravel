@@ -11,6 +11,6 @@ enum Endpoint: string
 
     public function getRequestUrl(): string
     {
-        return config('cannaleo-client.base_url') . $this->value;
+        return config('cannaleo-client.base_url').$this->value;
     }
 }

@@ -14,10 +14,15 @@ use Illuminate\Support\Collection;
 class PrescriptionTransactionRequest extends BaseRequest implements Request
 {
     protected string $prescription;
+
     protected string $internalOrderId;
+
     protected string $internalPharmacyId;
+
     protected DoctorObject $doctor;
+
     protected CustomerObject $customer;
+
     protected Collection $products;
 
     public function __construct(
@@ -26,16 +31,14 @@ class PrescriptionTransactionRequest extends BaseRequest implements Request
         string $internalPharmacyId,
         DoctorObject $doctor,
         CustomerObject $customer
-    )
-    {
+    ) {
         $this->prescription($prescription);
         $this->internalOrderId($internalOrderId);
         $this->internalPharmacyId($internalPharmacyId);
         $this->doctor($doctor);
         $this->customer($customer);
-        $this->products = new Collection();
+        $this->products = new Collection;
     }
-
 
     public function getPrescription(bool $encoded = true): string
     {

@@ -9,7 +9,6 @@ use Illuminate\Http\Client\ConnectionException;
 
 class PharmaciesRequest extends BaseRequest implements Request
 {
-
     /**
      * @throws ConnectionException
      */

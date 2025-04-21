@@ -32,7 +32,7 @@ class PharmaciesResponse extends BaseResponse
     protected function parsePharmacies(): Collection
     {
         $pharmacies = $this->json('data.pharmacies');
-        $collection = new Collection();
+        $collection = new Collection;
 
         foreach ($pharmacies as $pharmacy) {
             $collection->add(new PharmacyResponseObject($pharmacy));

@@ -6,18 +6,18 @@ use Illuminate\Support\Carbon;
 pest()->group('api', 'data-objects', 'data-request-objects');
 
 beforeEach(function () {
-    $this->object =  new DoctorObject(
+    $this->object = new DoctorObject(
         'John Doe',
         'Testtown',
         Carbon::today()
     );
 });
 
-it ('can be initialized', function () {
+it('can be initialized', function () {
     expect($this->object)->toBeInstanceOf(DoctorObject::class);
 });
 
-it ('can handle name', function () {
+it('can handle name', function () {
     expect($this->object->getName())
         ->toBeString()
         ->toBe('John Doe')
@@ -25,7 +25,7 @@ it ('can handle name', function () {
         ->toBe('Max Muster');
 });
 
-it ('can handle city of signature', function () {
+it('can handle city of signature', function () {
     expect($this->object->getCityOfSignature())
         ->toBeString()
         ->toBe('Testtown')
@@ -33,7 +33,7 @@ it ('can handle city of signature', function () {
         ->toBe('Test Town');
 });
 
-it ('can handle date of signature', function () {
+it('can handle date of signature', function () {
     expect($this->object->getDateOfSignature())
         ->toBeInstanceOf(Carbon::class)
         ->and($this->object->getDateOfSignature()->toDateString())
@@ -42,7 +42,7 @@ it ('can handle date of signature', function () {
         ->toBe(Carbon::yesterday()->toDateString());
 });
 
-it ('can handle phone number', function () {
+it('can handle phone number', function () {
     expect($this->object->getPhone())
         ->toBeNull()
         ->and($this->object->phone('123456789')->getPhone())
@@ -50,7 +50,7 @@ it ('can handle phone number', function () {
         ->toBe('123456789');
 });
 
-it ('can handle email address', function () {
+it('can handle email address', function () {
     expect($this->object->getEmail())
         ->toBeNull()
         ->and($this->object->email('test@example.com')->getEmail())
@@ -58,7 +58,7 @@ it ('can handle email address', function () {
         ->toBe('test@example.com');
 });
 
-it ('can be converted to an array', function () {
+it('can be converted to an array', function () {
     expect($this->object->toArray())
         ->toBeArray()
         ->toBe([

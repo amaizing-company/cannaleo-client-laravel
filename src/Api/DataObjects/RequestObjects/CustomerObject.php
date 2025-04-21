@@ -7,10 +7,15 @@ use AmaizingCompany\CannaleoClient\Api\Contracts\DataRequestObject as DataReques
 class CustomerObject extends DataRequestObject implements DataRequestObjectContract
 {
     protected string $firstname;
+
     protected string $lastname;
+
     protected string $email;
+
     protected ?string $phone;
+
     protected AddressObject $homeAddress;
+
     protected AddressObject $deliveryAddress;
 
     public function __construct(
@@ -19,8 +24,7 @@ class CustomerObject extends DataRequestObject implements DataRequestObjectContr
         string $email,
         AddressObject $homeAddress,
         AddressObject $deliveryAddress
-    )
-    {
+    ) {
         $this->firstname($firstname);
         $this->lastname($lastname);
         $this->email($email);

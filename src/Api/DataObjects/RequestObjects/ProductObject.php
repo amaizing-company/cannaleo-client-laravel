@@ -7,9 +7,13 @@ use AmaizingCompany\CannaleoClient\Api\Contracts\DataRequestObject as DataReques
 class ProductObject extends DataRequestObject implements DataRequestObjectContract
 {
     protected string $id;
+
     protected string $name;
+
     protected int $price;
+
     protected string $category;
+
     protected int $quantity;
 
     public function __construct(string $id, string $name, int $price, string $category, int $quantity)

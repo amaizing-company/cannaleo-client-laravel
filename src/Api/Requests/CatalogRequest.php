@@ -11,12 +11,13 @@ use Illuminate\Support\Collection;
 class CatalogRequest extends BaseRequest implements Request
 {
     protected Collection $includedPharmacies;
+
     protected Collection $excludedPharmacies;
 
     public function __construct()
     {
-        $this->includedPharmacies = new Collection();
-        $this->excludedPharmacies = new Collection();
+        $this->includedPharmacies = new Collection;
+        $this->excludedPharmacies = new Collection;
     }
 
     public function excludePharmacies(array $pharmacyIds): static
@@ -55,11 +56,11 @@ class CatalogRequest extends BaseRequest implements Request
         $request = static::buildRequest()
             ->acceptJson();
 
-        if (!$this->includedPharmacies->isEmpty()) {
+        if (! $this->includedPharmacies->isEmpty()) {
             $queryParams['include'] = $this->includedPharmacies->implode(',');
         }
 
-        if (!$this->excludedPharmacies->isEmpty()) {
+        if (! $this->excludedPharmacies->isEmpty()) {
             $queryParams['exclude'] = $this->excludedPharmacies->implode(',');
         }
 

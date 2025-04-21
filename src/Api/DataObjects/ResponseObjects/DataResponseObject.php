@@ -3,12 +3,8 @@
 namespace AmaizingCompany\CannaleoClient\Api\DataObjects\ResponseObjects;
 
 use AmaizingCompany\CannaleoClient\Api\Enums\BoolEnum;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
-/**
- *
- */
 abstract class DataResponseObject
 {
     const array MAP = [];

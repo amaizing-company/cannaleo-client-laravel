@@ -24,20 +24,35 @@ class PharmacyResponseObject extends DataResponseObject
     ];
 
     protected int $id;
+
     protected string $cannabisPharmacyName;
+
     protected ?string $officialName = null;
+
     protected string $domain;
+
     protected ?string $email = null;
+
     protected ?string $phoneNumber = null;
+
     protected ?string $street = null;
+
     protected ?string $zipCode = null;
+
     protected ?string $city = null;
+
     protected bool $shipping = false;
+
     protected bool $express = false;
+
     protected bool $localCourier = false;
+
     protected bool $pickup = false;
+
     protected ?int $shippingCostStandard = null;
+
     protected ?int $expressCostStandard = null;
+
     protected ?int $localCourierCostStandard = null;
 
     public function getId(): int

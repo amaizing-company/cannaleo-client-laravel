@@ -41,11 +41,11 @@ beforeEach(function () {
     );
 });
 
-it ('can be initiated', function () {
+it('can be initiated', function () {
     expect($this->request)->toBeInstanceOf(PrescriptionTransactionRequest::class);
 });
 
-it ('can handle prescription data', function () {
+it('can handle prescription data', function () {
     expect($this->request->getPrescription())
         ->toBeString()
         ->toBe(base64_encode('test_file'))
@@ -56,7 +56,7 @@ it ('can handle prescription data', function () {
         ->toBe('new_test_file');
 });
 
-it ('can handle internal order id', function () {
+it('can handle internal order id', function () {
     expect($this->request->getInternalOrderId())
         ->toBeString()
         ->toBe('1234')
@@ -64,7 +64,7 @@ it ('can handle internal order id', function () {
         ->toBe('4321');
 });
 
-it ('can handle internal pharmacy id', function () {
+it('can handle internal pharmacy id', function () {
     expect($this->request->getInternalPharmacyId())
         ->toBeString()
         ->toBe('1234')
@@ -72,17 +72,17 @@ it ('can handle internal pharmacy id', function () {
         ->toBe('4321');
 });
 
-it ('can handle doctor', function () {
+it('can handle doctor', function () {
     expect($this->request->getDoctor())
         ->toBeInstanceOf(DoctorObject::class);
 });
 
-it ('can handle customer', function () {
+it('can handle customer', function () {
     expect($this->request->getCustomer())
         ->toBeInstanceOf(CustomerObject::class);
 });
 
-it ('can handle products', function () {
+it('can handle products', function () {
     expect($this->request->getProducts()->isEmpty())
         ->toBeTrue()
         ->and(
@@ -94,10 +94,10 @@ it ('can handle products', function () {
         ->toBeFalse();
 });
 
-it ('can send request and receive response', function () {
+it('can send request and receive response', function () {
     $this->fakeHttpResponses();
 
-    $this->request->addProduct(new ProductObject('1234',  'Testproduct', 799, 'flowers', 1));
+    $this->request->addProduct(new ProductObject('1234', 'Testproduct', 799, 'flowers', 1));
 
     $response = $this->request->send();
 

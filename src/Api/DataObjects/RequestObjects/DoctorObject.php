@@ -8,9 +8,13 @@ use Illuminate\Support\Carbon;
 class DoctorObject extends DataRequestObject implements DataRequestObjectContract
 {
     protected string $name;
+
     protected ?string $phone;
+
     protected ?string $email;
+
     protected string $cityOfSignature;
+
     protected Carbon $dateOfSignature;
 
     public function __construct(string $name, string $cityOfSignature, Carbon $dateOfSignature)
@@ -22,7 +26,7 @@ class DoctorObject extends DataRequestObject implements DataRequestObjectContrac
 
     public function getName(): string
     {
-        return   $this->name;
+        return $this->name;
     }
 
     public function name(string $name): static

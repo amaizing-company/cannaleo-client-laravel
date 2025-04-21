@@ -14,11 +14,11 @@ beforeEach(function () {
     );
 });
 
-it ('can be initialized', function () {
+it('can be initialized', function () {
     expect($this->object)->toBeInstanceOf(ProductObject::class);
 });
 
-it ('can handle id', function () {
+it('can handle id', function () {
     expect($this->object->getId())
         ->toBeString()
         ->toBe('test_id')
@@ -26,7 +26,7 @@ it ('can handle id', function () {
         ->toBe('id_test');
 });
 
-it ('can handle name', function () {
+it('can handle name', function () {
     expect($this->object->getName())
         ->toBeString()
         ->toBe('Test Product')
@@ -34,7 +34,7 @@ it ('can handle name', function () {
         ->toBe('Product Name');
 });
 
-it ('can handle price', function () {
+it('can handle price', function () {
     expect($this->object->getPrice())
         ->toBeFloat()
         ->toBe(7.99)
@@ -43,7 +43,7 @@ it ('can handle price', function () {
         ->toBe(8.00);
 });
 
-it ('can handle category', function () {
+it('can handle category', function () {
     expect($this->object->getCategory())
         ->toBeString()
         ->toBe('flower')
@@ -51,7 +51,7 @@ it ('can handle category', function () {
         ->toBe('Category');
 });
 
-it ('can handle quantity', function () {
+it('can handle quantity', function () {
     expect($this->object->getQuantity())
         ->toBeInt()
         ->toBe(1)
@@ -59,7 +59,7 @@ it ('can handle quantity', function () {
         ->toBe(2);
 });
 
-it ('can be converted to an array', function () {
+it('can be converted to an array', function () {
     expect($this->object->toArray())
         ->toBeArray()
         ->toBe([

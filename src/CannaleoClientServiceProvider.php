@@ -2,9 +2,9 @@
 
 namespace AmaizingCompany\CannaleoClient;
 
+use AmaizingCompany\CannaleoClient\Commands\CannaleoClientCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use AmaizingCompany\CannaleoClient\Commands\CannaleoClientCommand;
 
 class CannaleoClientServiceProvider extends PackageServiceProvider
 {

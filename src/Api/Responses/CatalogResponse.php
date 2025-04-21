@@ -33,7 +33,7 @@ class CatalogResponse extends BaseResponse
     {
         $products = $this->json('data.catalog');
 
-        $collection = new Collection();
+        $collection = new Collection;
 
         if (empty($products)) {
             return $collection;

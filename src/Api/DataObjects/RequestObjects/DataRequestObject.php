@@ -2,7 +2,4 @@
 
 namespace AmaizingCompany\CannaleoClient\Api\DataObjects\RequestObjects;
 
-abstract class DataRequestObject
-{
-
-}
+abstract class DataRequestObject {}

@@ -7,8 +7,11 @@ use AmaizingCompany\CannaleoClient\Api\Contracts\DataRequestObject as DataReques
 class AddressObject extends DataRequestObject implements DataRequestObjectContract
 {
     protected string $streetName;
+
     protected string $houseNumber;
+
     protected string $postalCode;
+
     protected string $city;
 
     public function __construct(string $streetName, string $houseNumber, string $postalCode, string $city)

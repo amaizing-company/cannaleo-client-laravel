@@ -2,8 +2,6 @@
 
 namespace AmaizingCompany\CannaleoClient\Api\Responses;
 
-use Illuminate\Support\Carbon;
-
 class ApiStatusResponse extends BaseResponse
 {
     public function getLabel(): string

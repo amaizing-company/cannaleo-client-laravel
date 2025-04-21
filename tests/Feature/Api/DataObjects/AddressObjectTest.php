@@ -5,7 +5,7 @@ use AmaizingCompany\CannaleoClient\Api\DataObjects\RequestObjects\AddressObject;
 pest()->group('api', 'data-objects', 'data-request-objects');
 
 beforeEach(function () {
-    $this->object =  new AddressObject(
+    $this->object = new AddressObject(
         'Teststreet',
         '20',
         '12345',
@@ -13,12 +13,12 @@ beforeEach(function () {
     );
 });
 
-it ('can be initialized', function () {
+it('can be initialized', function () {
     expect($this->object)
         ->toBeInstanceOf(AddressObject::class);
 });
 
-it ('can handle street name', function () {
+it('can handle street name', function () {
     expect($this->object->getStreetName())
         ->toBeString()
         ->toBe('Teststreet')
@@ -26,7 +26,7 @@ it ('can handle street name', function () {
         ->toBe('Test Street');
 });
 
-it ('can hande house number', function () {
+it('can hande house number', function () {
     expect($this->object->getHouseNumber())
         ->toBeString()
         ->toBe('20')
@@ -34,7 +34,7 @@ it ('can hande house number', function () {
         ->toBe('10A');
 });
 
-it ('can handle city', function () {
+it('can handle city', function () {
     expect($this->object->getCity())
         ->toBeString()
         ->toBe('Testtown')
@@ -42,7 +42,7 @@ it ('can handle city', function () {
         ->toBe('Test Town');
 });
 
-it ('can handle postal code', function () {
+it('can handle postal code', function () {
     expect($this->object->getPostalCode())
         ->toBeString()
         ->toBe('12345')
@@ -50,7 +50,7 @@ it ('can handle postal code', function () {
         ->toBe('54321');
 });
 
-it ('can be converted in an array', function () {
+it('can be converted in an array', function () {
     expect($this->object->toArray())
         ->toBeArray()
         ->toBe([

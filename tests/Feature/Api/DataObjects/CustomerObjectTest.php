@@ -22,11 +22,11 @@ beforeEach(function () {
     );
 });
 
-it ('can be initialized', function () {
+it('can be initialized', function () {
     expect($this->object)->toBeInstanceOf(CustomerObject::class);
 });
 
-it ('can handle first name', function () {
+it('can handle first name', function () {
     expect($this->object->getFirstName())
         ->toBeString()
         ->toBe('John')
@@ -34,7 +34,7 @@ it ('can handle first name', function () {
         ->toBe('Max');
 });
 
-it ('can handle last name', function () {
+it('can handle last name', function () {
     expect($this->object->getLastName())
         ->toBeString()
         ->toBe('Doe')
@@ -42,7 +42,7 @@ it ('can handle last name', function () {
         ->toBe('Muster');
 });
 
-it ('can handle email address', function () {
+it('can handle email address', function () {
     expect($this->object->getEmail())
         ->toBeString()
         ->toBe('test@example.com')
@@ -50,7 +50,7 @@ it ('can handle email address', function () {
         ->toBe('example@example.com');
 });
 
-it ('can handle phone number', function () {
+it('can handle phone number', function () {
     expect($this->object->getPhone())
         ->toBeNull()
         ->and($this->object->phone('0123456789')->getPhone())
@@ -58,17 +58,17 @@ it ('can handle phone number', function () {
         ->toBe('0123456789');
 });
 
-it ('can handle home address', function () {
+it('can handle home address', function () {
     expect($this->object->getHomeAddress())
         ->toBeInstanceOf(AddressObject::class);
 });
 
-it ('can handle delivery address', function () {
+it('can handle delivery address', function () {
     expect($this->object->getDeliveryAddress())
         ->toBeInstanceOf(AddressObject::class);
 });
 
-it ('can be converted to an array', function () {
+it('can be converted to an array', function () {
     expect($this->object->toArray())
         ->toBeArray()
         ->toBe([
