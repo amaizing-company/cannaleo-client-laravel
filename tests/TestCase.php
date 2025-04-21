@@ -2,9 +2,9 @@
 
 namespace AmaizingCompany\CannaleoClient\Tests;
 
+use AmaizingCompany\CannaleoClient\CannaleoClientServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use AmaizingCompany\CannaleoClient\CannaleoClientServiceProvider;
 
 class TestCase extends Orchestra
 {
