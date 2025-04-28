@@ -41,18 +41,18 @@ class PharmacyTransaction extends BaseModel implements PharmacyTransactionContra
 
     public function pharmacy(): BelongsTo
     {
-        return $this->belongsTo(app(Pharmacy::class));
+        return $this->belongsTo(app(Pharmacy::class)->getMorphClass());
     }
 
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(
-            app(Product::class),
+            app(Product::class)->getMorphClass(),
             DatabaseHelper::getTableName('pharmacy_transactions_products')
         )
             ->withTimestamps()
             ->withPivot('price')
-            ->using(app(PharmacyTransactionProduct::class));
+            ->using(app(PharmacyTransactionProduct::class)->getMorphClass());
     }
 
     public function order(): MorphTo

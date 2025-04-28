@@ -61,26 +61,26 @@ class Product extends BaseModel implements ProductContract
 
     public function pharmacy(): BelongsTo
     {
-        return $this->belongsTo(app(Pharmacy::class));
+        return $this->belongsTo(app(Pharmacy::class)->getMorphClass());
     }
 
     public function terpenes(): BelongsToMany
     {
         return $this->belongsToMany(
-            app(Terpen::class),
+            app(Terpen::class)->getMorphClass(),
             DatabaseHelper::getTableName('products_terpenes')
         )
-            ->using(app(ProductTerpen::class))
+            ->using(app(ProductTerpen::class)->getMorphClass())
             ->withTimestamps();
     }
 
     public function pharmacyTransactions(): BelongsToMany
     {
         return $this->belongsToMany(
-            app(PharmacyTransaction::class),
+            app(PharmacyTransaction::class)->getMorphClass(),
             DatabaseHelper::getTableName('pharmacy_transactions_products')
         )
-            ->using(app(PharmacyTransactionProduct::class))
+            ->using(app(PharmacyTransactionProduct::class)->getMorphClass())
             ->withTimestamps();
     }
 }

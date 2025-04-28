@@ -60,11 +60,11 @@ class Pharmacy extends BaseModel implements PharmacyContract
 
     public function products(): HasMany
     {
-        return $this->hasMany(app(Product::class));
+        return $this->hasMany(app(Product::class)->getMorphClass());
     }
 
     public function pharmacyTransactions(): HasMany
     {
-        return $this->hasMany(app(PharmacyTransaction::class));
+        return $this->hasMany(app(PharmacyTransaction::class)->getMorphClass());
     }
 }

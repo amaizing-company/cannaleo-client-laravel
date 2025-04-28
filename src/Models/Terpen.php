@@ -29,8 +29,11 @@ class Terpen extends BaseModel implements TerpenContract
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(app(Product::class), 'cannaleo_products_terpenes')
-            ->using(app(ProductTerpen::class))
+        return $this->belongsToMany(
+            app(Product::class)->getMorphClass(),
+            'cannaleo_products_terpenes'
+        )
+            ->using(app(ProductTerpen::class)->getMorphClass())
             ->withTimestamps();
     }
 }
