@@ -2,4 +2,9 @@
 
 namespace AmaizingCompany\CannaleoClient\Contracts\Models;
 
-interface Terpen {}
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+interface Terpen
+{
+    public function products(): BelongsToMany;
+}

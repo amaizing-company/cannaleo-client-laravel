@@ -2,4 +2,14 @@
 
 namespace AmaizingCompany\CannaleoClient\Contracts\Models;
 
-interface Product {}
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+interface Product
+{
+    public function pharmacy(): BelongsTo;
+
+    public function terpenes(): BelongsToMany;
+
+    public function pharmacyTransactions():  BelongsToMany;
+}
