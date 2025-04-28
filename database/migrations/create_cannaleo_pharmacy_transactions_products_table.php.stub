@@ -1,0 +1,25 @@
+<?php
+
+use AmaizingCompany\CannaleoClient\Support\DatabaseHelper;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up()
+    {
+        Schema::create(DatabaseHelper::getTableName('pharmacy_transactions_products'), function (Blueprint $table) {
+            $table->ulid('id')->primary();
+            $table->foreignUlid('pharmacy_transaction_id')
+                ->constrained(DatabaseHelper::getTableName('pharmacy_transactions'));
+            $table->foreignUlid('product_id')->constrained(DatabaseHelper::getTableName('products'));
+            $table->json('price');
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists(DatabaseHelper::getTableName('pharmacy_transactions_products'));
+    }
+};

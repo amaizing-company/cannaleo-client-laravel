@@ -1,0 +1,71 @@
+<?php
+
+namespace AmaizingCompany\CannaleoClient\Models;
+
+use Akaunting\Money\Casts\MoneyCast;
+use Akaunting\Money\Money;
+use AmaizingCompany\CannaleoClient\Contracts\Models\Pharmacy as PharmacyContract;
+use AmaizingCompany\CannaleoClient\Contracts\Models\Product;
+use AmaizingCompany\CannaleoClient\Support\DatabaseHelper;
+use AmaizingCompany\CannaleoClient\Contracts\Models\PharmacyTransaction;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
+
+/**
+ * @param string $id
+ * @param int $external_id
+ * @param string|null $cannabis_pharmacy_name
+ * @param string|null $official_name
+ * @param string|null $domain
+ * @param string|null $email
+ * @param string|null $phone
+ * @param string|null $street
+ * @param string|null $zip_code
+ * @param string|null $city
+ * @param bool $has_shipping
+ * @param bool $has_express
+ * @param bool $has_local_courier
+ * @param bool $has_pickup
+ * @param Money $shipping_price
+ * @param Money $express_price
+ * @param Money $local_courier_price
+ * @param Carbon $created_at
+ * @param Carbon $updated_at
+ */
+class Pharmacy extends BaseModel implements PharmacyContract
+{
+    use HasFactory;
+
+    protected $guarded = [];
+
+    public function casts(): array
+    {
+        return [
+            'external_id' => 'integer',
+            'has_shipping' => 'boolean',
+            'has_express' => 'boolean',
+            'has_local_courier' => 'boolean',
+            'has_pickup' => 'boolean',
+            'shipping_price' => MoneyCast::class,
+            'express_price' => MoneyCast::class,
+            'local_courier_price' => MoneyCast::class,
+        ];
+    }
+
+    public function getTable(): string
+    {
+        return DatabaseHelper::getTableName('pharmacies');
+    }
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(app(Product::class));
+    }
+
+    public function pharmacyTransactions(): HasMany
+    {
+        return $this->hasMany(app(PharmacyTransaction::class));
+    }
+}

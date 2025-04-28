@@ -7,4 +7,6 @@ return [
 
     'api_currency' => 'EUR',
     'default_currency' => 'EUR',
+
+    'table_prefix' => 'cannaleo_'
 ];
