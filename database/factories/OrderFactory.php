@@ -2,18 +2,15 @@
 
 namespace AmaizingCompany\CannaleoClient\Database\Factories;
 
+use AmaizingCompany\CannaleoClient\Tests\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/*
-class ModelFactory extends Factory
+class OrderFactory extends Factory
 {
-    protected $model = YourModel::class;
+    protected $model = Order::class;
 
     public function definition()
     {
-        return [
-
-        ];
+        return [];
     }
 }
-*/

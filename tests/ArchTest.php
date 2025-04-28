@@ -5,16 +5,27 @@ use AmaizingCompany\CannaleoClient\Api\DataObjects\RequestObjects\DataRequestObj
 use AmaizingCompany\CannaleoClient\Api\DataObjects\ResponseObjects\DataResponseObject;
 use AmaizingCompany\CannaleoClient\Api\Requests\BaseRequest;
 use AmaizingCompany\CannaleoClient\Api\Responses\BaseResponse;
+use AmaizingCompany\CannaleoClient\Contracts\Models\Pharmacy;
+use AmaizingCompany\CannaleoClient\Contracts\Models\PharmacyTransaction;
+use AmaizingCompany\CannaleoClient\Contracts\Models\Product;
+use AmaizingCompany\CannaleoClient\Contracts\Models\Terpen;
+use AmaizingCompany\CannaleoClient\Models\BaseModel;
+use AmaizingCompany\CannaleoClient\Models\PharmacyTransactionProduct;
+use AmaizingCompany\CannaleoClient\Models\ProductTerpen;
+use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 arch('it will not use debugging functions')
     ->expect(['dd', 'dump', 'ray'])
     ->each->not->toBeUsed();
 
-arch()
+arch('api concerns')
     ->expect('AmaizingCompany\CannaleoClient\Api\Concerns')
     ->toBeTraits();
 
-arch()
+arch('api contracts')
     ->expect('AmaizingCompany\CannaleoClient\Api\Contracts')
     ->toBeInterfaces();
 
@@ -67,3 +78,68 @@ arch()
     ->ignoring(BaseResponse::class)
     ->toExtend(BaseResponse::class)
     ->ignoring(BaseResponse::class);
+
+arch()
+    ->expect('AmaizingCompany\CannaleoClient\Casts')
+    ->toBeClasses()
+    ->toImplement(CastsAttributes::class);
+
+arch()
+    ->expect('AmaizingCompany\CannaleoClient\Concerns')
+    ->toBeTraits();
+
+arch()
+    ->expect('AmaizingCompany\CannaleoClient\Contracts')
+    ->toBeInterfaces();
+
+arch()
+    ->expect('AmaizingCompany\CannaleoClient\Enums')
+    ->toBeEnums();
+
+arch()
+    ->expect('AmaizingCompany\CannaleoClient\Models')
+    ->toBeClasses()
+    ->toExtend(BaseModel::class)
+    ->ignoring([BaseModel::class, PharmacyTransactionProduct::class, ProductTerpen::class])
+    ->not->toBeAbstract()
+    ->ignoring(BaseModel::class)
+    ->toUse(HasFactory::class)
+    ->ignoring([BaseModel::class, ProductTerpen::class]);
+
+arch()
+    ->expect(BaseModel::class)
+    ->toBeClass()
+    ->toBeAbstract()
+    ->toExtend(Model::class);
+
+arch('pharmacy transaction product model extends pivot')
+    ->expect(PharmacyTransactionProduct::class)
+    ->toExtend(Pivot::class);
+
+arch('product terpen model extends pivot')
+    ->expect(ProductTerpen::class)
+    ->toExtend(Pivot::class);
+
+arch('pharmacy model implements pharmacyContract interface')
+    ->expect(\AmaizingCompany\CannaleoClient\Models\Pharmacy::class)
+    ->toImplement(Pharmacy::class);
+
+arch('pharmacy transaction model implements pharmacyTransactionContract interface')
+    ->expect(\AmaizingCompany\CannaleoClient\Models\PharmacyTransaction::class)
+    ->toImplement(PharmacyTransaction::class);
+
+arch('pharmacy transaction product model implements pharmacyTransactionProductContract interface')
+    ->expect(PharmacyTransactionProduct::class)
+    ->toImplement(\AmaizingCompany\CannaleoClient\Contracts\Models\PharmacyTransactionProduct::class);
+
+arch('product model implements productContract interface')
+    ->expect(\AmaizingCompany\CannaleoClient\Models\Product::class)
+    ->toImplement(Product::class);
+
+arch('terpen model implements terpenContract interface')
+    ->expect(\AmaizingCompany\CannaleoClient\Models\Terpen::class)
+    ->toImplement(Terpen::class);
+
+arch('product terpen model implements productTerpenContract interface')
+    ->expect(ProductTerpen::class)
+    ->toImplement(\AmaizingCompany\CannaleoClient\Contracts\Models\ProductTerpen::class);

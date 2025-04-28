@@ -1,0 +1,39 @@
+<?php
+
+use AmaizingCompany\CannaleoClient\Support\DatabaseHelper;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class () extends Migration
+{
+    public function up()
+    {
+        Schema::create(DatabaseHelper::getTableName('products'), function (Blueprint $table) {
+            $table->ulid('id')->primary();
+            $table->foreignUlid('pharmacy_id')
+                ->constrained(DatabaseHelper::getTableName('pharmacies'))
+                ->cascadeOnDelete();
+            $table->string('external_id')->unique();
+            $table->string('name');
+            $table->string('genetic')->nullable();
+            $table->string('country')->nullable();
+            $table->float('thc')->default(0.00);
+            $table->float('cbd')->default(0.00);
+            $table->boolean('available')->default(false);
+            $table->json('price');
+            $table->string('category')->nullable();
+            $table->string('manufacturer')->nullable();
+            $table->string('grower')->nullable();
+            $table->string('dominance')->nullable();
+            $table->boolean('irradiated')->default(false);
+            $table->string('strain')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists(DatabaseHelper::getTableName('products'));
+    }
+};

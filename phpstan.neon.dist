@@ -9,3 +9,18 @@ parameters:
     tmpDir: build/phpstan
     checkOctaneCompatibility: true
     checkModelProperties: true
+    ignoreErrors:
+        -
+            identifier: trait.unused
+            paths:
+                - src/Concerns/IsCannaleoCustomer.php
+                - src/Concerns/IsCannaleoDoctor.php
+                - src/Concerns/IsCannaleoOrder.php
+                - src/Concerns/IsCannaleoPrescription.php
+
+        -
+            identifier: property.notFound
+            paths:
+                - src/Models/BaseModel.php
+
+
