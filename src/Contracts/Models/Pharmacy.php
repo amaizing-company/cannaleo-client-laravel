@@ -2,11 +2,11 @@
 
 namespace AmaizingCompany\CannaleoClient\Contracts\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 interface Pharmacy
 {
-    public function pharmacyTransactions(): BelongsToMany;
+    public function pharmacyTransactions(): HasMany;
 
-    public function products(): BelongsToMany;
+    public function products(): HasMany;
 }
