@@ -4,12 +4,13 @@ namespace AmaizingCompany\CannaleoClient\Database\Factories;
 
 use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Models\PharmacyTransaction;
+use AmaizingCompany\CannaleoClient\Models\PharmacyTransactionProduct;
 use AmaizingCompany\CannaleoClient\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PharmacyTransactionProductFactory extends Factory
 {
-    protected $model = PharmacyTransactionProductFactory::class;
+    protected $model = PharmacyTransactionProduct::class;
 
     public function definition()
     {
