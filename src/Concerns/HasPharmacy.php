@@ -13,6 +13,6 @@ trait HasPharmacy
 {
     public function pharmacy(): BelongsTo
     {
-       return $this->belongsTo(Pharmacy::class);
+        return $this->belongsTo(Pharmacy::class);
     }
 }

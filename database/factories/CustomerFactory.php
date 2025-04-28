@@ -3,7 +3,6 @@
 namespace AmaizingCompany\CannaleoClient\Database\Factories;
 
 use AmaizingCompany\CannaleoClient\Tests\Models\Customer;
-use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CustomerFactory extends Factory

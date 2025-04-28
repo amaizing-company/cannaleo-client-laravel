@@ -12,22 +12,23 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Support\Carbon;
 
 /**
- * @param string $id
- * @param string $pharmacy_transaction_id
- * @param string $product_id
- * @param Money $price
- * @param Carbon $created_at
- * @param Carbon $updated_at
+ * @param  string  $id
+ * @param  string  $pharmacy_transaction_id
+ * @param  string  $product_id
+ * @param  Money  $price
+ * @param  Carbon  $created_at
+ * @param  Carbon  $updated_at
  */
 class PharmacyTransactionProduct extends Pivot implements PharmacyTransactionProductContract
 {
-    use HasUlids;
     use HasFactory;
+    use HasUlids;
 
     protected $keyType = 'string';
+
     public $incrementing = false;
 
-    protected static function  boot()
+    protected static function boot()
     {
         parent::boot();
 

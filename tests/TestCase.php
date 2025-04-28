@@ -34,13 +34,12 @@ class TestCase extends Orchestra
             'prefix' => '',
         ]);
 
-
-         foreach (File::allFiles(__DIR__ . '/../database/migrations') as $migration) {
+        foreach (File::allFiles(__DIR__.'/../database/migrations') as $migration) {
             (include $migration->getRealPath())->up();
-         }
+        }
 
-         foreach (File::allFiles(__DIR__ . '/migrations') as $migration) {
-             (include $migration->getRealPath())->up();
-         }
+        foreach (File::allFiles(__DIR__.'/migrations') as $migration) {
+            (include $migration->getRealPath())->up();
+        }
     }
 }

@@ -39,10 +39,10 @@ class CannaleoClientServiceProvider extends PackageServiceProvider
     {
         // Bind model contracts
         $this->app->bind(Pharmacy::class, Models\Pharmacy::class);
-        $this->app->bind(PharmacyTransaction::class,  Models\PharmacyTransaction::class);
-        $this->app->bind(PharmacyTransactionProduct::class,  Models\PharmacyTransactionProduct::class);
+        $this->app->bind(PharmacyTransaction::class, Models\PharmacyTransaction::class);
+        $this->app->bind(PharmacyTransactionProduct::class, Models\PharmacyTransactionProduct::class);
         $this->app->bind(Product::class, Models\Product::class);
         $this->app->bind(ProductTerpen::class, Models\ProductTerpen::class);
-        $this->app->bind(Terpen::class,  Models\Terpen::class);
+        $this->app->bind(Terpen::class, Models\Terpen::class);
     }
 }

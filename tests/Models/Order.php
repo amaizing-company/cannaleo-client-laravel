@@ -19,5 +19,4 @@ class Order extends BaseModel implements CannaleoOrder
     {
         return DatabaseHelper::getTableName('orders');
     }
-
 }

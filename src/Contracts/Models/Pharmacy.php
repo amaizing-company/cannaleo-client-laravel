@@ -2,7 +2,4 @@
 
 namespace AmaizingCompany\CannaleoClient\Contracts\Models;
 
-interface Pharmacy
-{
-
-}
+interface Pharmacy {}

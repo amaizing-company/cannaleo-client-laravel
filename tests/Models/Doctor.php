@@ -20,7 +20,6 @@ class Doctor extends BaseModel implements CannaleoDoctor
         return DatabaseHelper::getTableName('doctors');
     }
 
-
     public function getName(): string
     {
         return $this->name;

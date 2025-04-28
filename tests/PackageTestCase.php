@@ -2,7 +2,4 @@
 
 namespace AmaizingCompany\CannaleoClient\Tests;
 
-class PackageTestCase extends TestCase
-{
-
-}
+class PackageTestCase extends TestCase {}

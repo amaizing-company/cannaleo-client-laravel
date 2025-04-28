@@ -12,6 +12,7 @@ class ProductTerpen extends Pivot implements ProductTerpenContract
     use HasUlids;
 
     protected $keyType = 'string';
+
     public $incrementing = false;
 
     protected static function boot()
@@ -19,7 +20,7 @@ class ProductTerpen extends Pivot implements ProductTerpenContract
         parent::boot();
 
         static::creating(function (self $model) {
-             $model->id = $model->newUniqueId();
+            $model->id = $model->newUniqueId();
         });
     }
 

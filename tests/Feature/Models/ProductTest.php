@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 // Base Model Tests
 test('product model can be initiated', function () {
-    $product = new Product();
+    $product = new Product;
 
     expect($product)
         ->toBeInstanceOf(Product::class)
@@ -14,7 +14,7 @@ test('product model can be initiated', function () {
 });
 
 test('product has correct guarded attributes', function () {
-    $product = new Product();
+    $product = new Product;
 
     expect($product->getGuarded())
         ->toBe([]);
@@ -22,7 +22,7 @@ test('product has correct guarded attributes', function () {
 
 // Model Configuration Tests
 test('product has correct table name', function () {
-    $product = new Product();
+    $product = new Product;
 
     expect($product->getTable())
         ->toBe('cannaleo_products');
@@ -30,7 +30,7 @@ test('product has correct table name', function () {
 
 // Cast Tests
 test('product has correct casts', function () {
-    $product = new Product();
+    $product = new Product;
 
     expect($product->getCasts())
         ->toBeArray()
@@ -42,7 +42,7 @@ test('product has correct casts', function () {
 
 // Relationship Tests
 test('pharmacy() returns a BelongsTo relation', function () {
-    $product = new Product();
+    $product = new Product;
     expect($product->pharmacy())
         ->toBeInstanceOf(BelongsTo::class);
 });
@@ -55,7 +55,7 @@ test('pharmacy relationship can be loaded', function () {
 });
 
 test('terpenes() returns a BelongsToMany relation', function () {
-    $product = new Product();
+    $product = new Product;
 
     expect($product->terpenes())
         ->toBeInstanceOf(BelongsToMany::class);
@@ -70,7 +70,7 @@ test('terpenes relationship can be loaded', function () {
 });
 
 test('pharmacyTransactions() returns a BelongsToMany relation', function () {
-    $product = new Product();
+    $product = new Product;
     expect($product->pharmacyTransactions())
         ->toBeInstanceOf(BelongsToMany::class);
 });

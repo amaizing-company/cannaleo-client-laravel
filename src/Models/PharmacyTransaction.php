@@ -14,19 +14,19 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Carbon;
 
 /**
- * @param string $id
- * @param string $pharmacy_id
- * @param Pharmacy $pharmacy
- * @param string $order_type
- * @param string $order_id
- * @param string $customer_type
- * @param string $customer_id
- * @param string $doctor_type
- * @param string $doctor_id
- * @param string $prescription_type
- * @param string $prescription_id
- * @param Carbon $created_at
- * @param Carbon $updated_at
+ * @param  string  $id
+ * @param  string  $pharmacy_id
+ * @param  Pharmacy  $pharmacy
+ * @param  string  $order_type
+ * @param  string  $order_id
+ * @param  string  $customer_type
+ * @param  string  $customer_id
+ * @param  string  $doctor_type
+ * @param  string  $doctor_id
+ * @param  string  $prescription_type
+ * @param  string  $prescription_id
+ * @param  Carbon  $created_at
+ * @param  Carbon  $updated_at
  */
 class PharmacyTransaction extends BaseModel implements PharmacyTransactionContract
 {

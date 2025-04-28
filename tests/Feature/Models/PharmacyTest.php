@@ -5,11 +5,10 @@ use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Contracts\Models\Product;
 use AmaizingCompany\CannaleoClient\Models\Pharmacy;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Carbon;
 
 // Base Model Tests
 test('pharmacy model can be initiated', function () {
-    $pharmacy = new Pharmacy();
+    $pharmacy = new Pharmacy;
 
     expect($pharmacy)
         ->toBeInstanceOf(Pharmacy::class)
@@ -17,13 +16,13 @@ test('pharmacy model can be initiated', function () {
 });
 
 test('pharmacy has correct guarded attributes', function () {
-    $pharmacy = new Pharmacy();
+    $pharmacy = new Pharmacy;
     expect($pharmacy->getGuarded())->toBe([]);
 });
 
 // Model Configuration Tests
 test('pharmacy has correct table name', function () {
-    $transaction = new Pharmacy();
+    $transaction = new Pharmacy;
 
     // Assuming the table name follows Laravel conventions
     expect($transaction->getTable())
@@ -32,7 +31,7 @@ test('pharmacy has correct table name', function () {
 
 // Cast Tests
 test('pharmacy has correct casts', function () {
-    $pharmacy = new Pharmacy();
+    $pharmacy = new Pharmacy;
     $casts = $pharmacy->casts();
 
     expect($casts)
@@ -50,7 +49,7 @@ test('pharmacy has correct casts', function () {
 
 // Relationship Tests
 test('products() returns a HasMany relation', function () {
-    $pharmacy = new Pharmacy();
+    $pharmacy = new Pharmacy;
     expect($pharmacy->products())
         ->toBeInstanceOf(HasMany::class);
 });
@@ -63,7 +62,7 @@ test('products relationship can be loaded', function () {
 });
 
 test('pharmacyTransactions() returns a HasMany relation', function () {
-    $pharmacy = new Pharmacy();
+    $pharmacy = new Pharmacy;
 
     expect($pharmacy->pharmacyTransactions())
         ->toBeInstanceOf(HasMany::class);
@@ -144,7 +143,7 @@ test('shipping options can be toggled', function () {
         'has_shipping' => true,
         'has_express' => true,
         'has_local_courier' => true,
-        'has_pickup' => true
+        'has_pickup' => true,
     ]);
 
     expect($pharmacy)
@@ -178,7 +177,6 @@ test('can handle multiple products', function () {
     expect($pharmacy->products)->toHaveCount(5);
 });
 
-
 // Model State Tests
 test('pharmacy attributes can be mass assigned', function () {
     $attributes = [
@@ -191,7 +189,7 @@ test('pharmacy attributes can be mass assigned', function () {
         'zip_code' => '12345',
         'city' => 'Test City',
         'has_shipping' => true,
-        'shipping_price' => Money::EUR(1000)
+        'shipping_price' => Money::EUR(1000),
     ];
 
     $pharmacy = new Pharmacy($attributes);

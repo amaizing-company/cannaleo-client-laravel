@@ -18,25 +18,25 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 
 /**
- * @param string $id
- * @param string $pharmacy_id
- * @param Pharmacy $pharmacy
- * @param string $external_id
- * @param string $name
- * @param string|null $genetic
- * @param string|null $country
- * @param float $thc
- * @param float $cbd
- * @param bool $available
- * @param Money $price
- * @param string|null $category
- * @param string|null $manufacturer
- * @param string|null $grower
- * @param string|null $dominance
- * @param bool $irradiated
- * @param string|null $strain
- * @param Carbon $created_at
- * @param Carbon $updated_at
+ * @param  string  $id
+ * @param  string  $pharmacy_id
+ * @param  Pharmacy  $pharmacy
+ * @param  string  $external_id
+ * @param  string  $name
+ * @param  string|null  $genetic
+ * @param  string|null  $country
+ * @param  float  $thc
+ * @param  float  $cbd
+ * @param  bool  $available
+ * @param  Money  $price
+ * @param  string|null  $category
+ * @param  string|null  $manufacturer
+ * @param  string|null  $grower
+ * @param  string|null  $dominance
+ * @param  bool  $irradiated
+ * @param  string|null  $strain
+ * @param  Carbon  $created_at
+ * @param  Carbon  $updated_at
  */
 class Product extends BaseModel implements ProductContract
 {

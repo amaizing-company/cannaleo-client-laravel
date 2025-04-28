@@ -2,9 +2,9 @@
 
 namespace AmaizingCompany\CannaleoClient\Database\Factories;
 
+use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Models\Pharmacy;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Akaunting\Money\Money;
 
 class PharmacyFactory extends Factory
 {
@@ -34,7 +34,7 @@ class PharmacyFactory extends Factory
             'has_pickup' => $hasPickup,
             'shipping_price' => Money::EUR($hasShipping ? fake()->randomNumber() : 0),
             'express_price' => Money::EUR($hasExpress ? fake()->randomNumber() : 0),
-            'local_courier_price' => Money::EUR($hasLocalCourier ? fake()->randomNumber(): 0),
+            'local_courier_price' => Money::EUR($hasLocalCourier ? fake()->randomNumber() : 0),
         ];
     }
 }

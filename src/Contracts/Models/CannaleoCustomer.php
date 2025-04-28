@@ -15,5 +15,6 @@ interface CannaleoCustomer
     public function getPhone(): string;
 
     public function getHomeAddress(): AddressObject;
+
     public function getDeliveryAddress(): AddressObject;
 }

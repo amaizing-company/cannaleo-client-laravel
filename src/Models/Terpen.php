@@ -11,10 +11,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 
 /**
- * @param string $id
- * @param string $name
- * @param Carbon $created_at
- * @param Carbon $updated_at
+ * @param  string  $id
+ * @param  string  $name
+ * @param  Carbon  $created_at
+ * @param  Carbon  $updated_at
  */
 class Terpen extends BaseModel implements TerpenContract
 {
