@@ -2,6 +2,7 @@
 
 namespace AmaizingCompany\CannaleoClient\Api\DataObjects\ResponseObjects;
 
+use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Api\Enums\BoolEnum;
 use Illuminate\Support\Collection;
 
@@ -42,16 +43,5 @@ abstract class DataResponseObject
         }
 
         return $param;
-    }
-
-    protected function parsePrice(&$param, int|float $value): static
-    {
-        if (is_float($value)) {
-            $param = (int) round(($value * 100), 0);
-        } else {
-            $param = $value;
-        }
-
-        return $this;
     }
 }

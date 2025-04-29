@@ -8,7 +8,7 @@ beforeEach(function () {
     $this->object = new ProductObject(
         'test_id',
         'Test Product',
-        799,
+        7.99,
         'flower',
         1
     );
@@ -35,10 +35,15 @@ it('can handle name', function () {
 });
 
 it('can handle price', function () {
-    expect($this->object->getPrice())
-        ->toBeFloat()
+    expect($this->object->getPriceAmount())
+        ->toBeInt()
+        ->toBe(799)
+        ->and($this->object->getPriceValue())
         ->toBe(7.99)
-        ->and($this->object->price(800)->getPrice())
+        ->and($this->object->price(800)->getPriceAmount())
+        ->toBeInt()
+        ->toBe(800)
+        ->and($this->object->getPriceValue())
         ->toBeFloat()
         ->toBe(8.00);
 });

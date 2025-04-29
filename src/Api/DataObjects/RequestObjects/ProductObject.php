@@ -2,22 +2,29 @@
 
 namespace AmaizingCompany\CannaleoClient\Api\DataObjects\RequestObjects;
 
+use Akaunting\Money\Casts\MoneyCast;
+use Akaunting\Money\Money;
+use AmaizingCompany\CannaleoClient\Api\Concerns\HasPrice;
 use AmaizingCompany\CannaleoClient\Api\Contracts\DataRequestObject as DataRequestObjectContract;
 
 class ProductObject extends DataRequestObject implements DataRequestObjectContract
 {
+    use HasPrice;
+
     protected string $id;
 
     protected string $name;
 
-    protected int $price;
+    protected Money $price;
 
     protected string $category;
 
     protected int $quantity;
 
-    public function __construct(string $id, string $name, int $price, string $category, int $quantity)
+    public function __construct(string $id, string $name, int|float $price, string $category, int $quantity)
     {
+        $this->price = static::initPriceParam();
+
         $this->id($id);
         $this->name($name);
         $this->price($price);
@@ -49,14 +56,24 @@ class ProductObject extends DataRequestObject implements DataRequestObjectContra
         return $this;
     }
 
-    public function getPrice(): float|int
+    public function getPrice(): Money
     {
-        return (float) $this->price / 100;
+        return $this->price;
     }
 
-    public function price(int $price): static
+    public function getPriceValue(): float
     {
-        $this->price = $price;
+        return $this->getPrice()->getValue();
+    }
+
+    public function getPriceAmount(): int
+    {
+        return (int) $this->getPrice()->getAmount();
+    }
+
+    public function price(int|float $price): static
+    {
+        $this->parsePrice($this->price, $price);
 
         return $this;
     }
@@ -90,7 +107,7 @@ class ProductObject extends DataRequestObject implements DataRequestObjectContra
         return [
             'id' => $this->getId(),
             'name' => $this->getName(),
-            'price' => $this->getPrice(),
+            'price' => $this->getPriceValue(),
             'category' => $this->getCategory(),
             'quantity' => $this->getQuantity(),
         ];

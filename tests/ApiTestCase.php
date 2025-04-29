@@ -56,6 +56,25 @@ class ApiTestCase extends TestCase
         ]);
     }
 
+    public function getPharmacyResponseObjectWithMinimumValues(): string
+    {
+        return json_encode([
+            'id' => 1,
+            'cannabis_pharmacy_name' => 'Demo Medicon-Apotheke',
+            'official_name' => 'Demo Apotheke',
+            'domain' => 'demo.example.de',
+            'email' => 'test@example.com',
+            'phone_number' => '',
+            'street' => 'Teststreet',
+            'plz' => '12345',
+            'city' => 'Testtown',
+            'shipping' => 'yes',
+            'express' => 'no',
+            'local_courier' => 'no',
+            'pickup' => 'yes'
+        ]);
+    }
+
     public function getProductResponseObject(): string
     {
         return json_encode([

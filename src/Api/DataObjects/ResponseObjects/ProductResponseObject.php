@@ -2,8 +2,13 @@
 
 namespace AmaizingCompany\CannaleoClient\Api\DataObjects\ResponseObjects;
 
+use Akaunting\Money\Money;
+use AmaizingCompany\CannaleoClient\Api\Concerns\HasPrice;
+
 class ProductResponseObject extends DataResponseObject
 {
+    use HasPrice;
+
     const array MAP = [
         'id' => 'id',
         'name' => 'name',
@@ -38,7 +43,7 @@ class ProductResponseObject extends DataResponseObject
 
     protected int|float $cbd;
 
-    protected int $price = 0;
+    protected Money $price;
 
     protected string $pharmacyName;
 
@@ -61,6 +66,13 @@ class ProductResponseObject extends DataResponseObject
     protected bool $irradiated;
 
     protected ?string $strain = null;
+
+    public function __construct(array $data)
+    {
+        $this->price = static::initPriceParam();
+
+        parent::__construct($data);
+    }
 
     public function getId(): string
     {
@@ -92,9 +104,19 @@ class ProductResponseObject extends DataResponseObject
         return $this->cbd;
     }
 
-    public function getPrice(): int
+    public function getPrice(): Money
     {
         return $this->price;
+    }
+
+    public function getPriceAmount(): int
+    {
+        return (int) $this->getPrice()->getAmount();
+    }
+
+    public function getPriceValue(): float
+    {
+        return $this->getPrice()->getValue();
     }
 
     public function getPharmacyName(): string
