@@ -43,15 +43,4 @@ abstract class DataResponseObject
 
         return $param;
     }
-
-    protected function parsePrice(&$param, int|float $value): static
-    {
-        if (is_float($value)) {
-            $param = (int) round(($value * 100), 0);
-        } else {
-            $param = $value;
-        }
-
-        return $this;
-    }
 }
