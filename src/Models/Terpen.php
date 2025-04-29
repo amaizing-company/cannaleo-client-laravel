@@ -8,6 +8,7 @@ use AmaizingCompany\CannaleoClient\Contracts\Models\Terpen as TerpenContract;
 use AmaizingCompany\CannaleoClient\Support\DatabaseHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
 /**
@@ -19,6 +20,7 @@ use Illuminate\Support\Carbon;
 class Terpen extends BaseModel implements TerpenContract
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $guarded = [];
 

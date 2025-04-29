@@ -29,6 +29,7 @@ return new class () extends Migration
             $table->boolean('irradiated')->default(false);
             $table->string('strain')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

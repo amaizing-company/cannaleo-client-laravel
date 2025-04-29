@@ -28,6 +28,7 @@ return new class extends Migration
             $table->json('express_price');
             $table->json('local_courier_price');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
