@@ -2,7 +2,6 @@
 
 namespace AmaizingCompany\CannaleoClient\Api\DataObjects\RequestObjects;
 
-use Akaunting\Money\Casts\MoneyCast;
 use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Api\Concerns\HasPrice;
 use AmaizingCompany\CannaleoClient\Api\Contracts\DataRequestObject as DataRequestObjectContract;

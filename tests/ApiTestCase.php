@@ -71,7 +71,7 @@ class ApiTestCase extends TestCase
             'shipping' => 'yes',
             'express' => 'no',
             'local_courier' => 'no',
-            'pickup' => 'yes'
+            'pickup' => 'yes',
         ]);
     }
 
