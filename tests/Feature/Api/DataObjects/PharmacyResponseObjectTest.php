@@ -87,60 +87,60 @@ it('can check if pickup is available', function () {
 
 it('can get shipping costs', function () {
     expect($this->object->getShippingCostStandard())
-        ->toBeInstanceOf(\Akaunting\Money\Money::class)
-        ->and($this->object->getShippingCostStandardAmount())
+        ->toBeInt()
         ->toBe(799)
-        ->and($this->object->getShippingCostStandardValue())
-        ->toBe(7.99);
+        ->and($this->object->getShippingCostStandard(true))
+        ->toBeString()
+        ->toBe("7.99");
 });
 
 it('can get shipping costs with minimal values', function () {
     $object = new PharmacyResponseObject(json_decode($this->getPharmacyResponseObjectWithMinimumValues(), true));
 
     expect($object->getShippingCostStandard())
-        ->toBeInstanceOf(\Akaunting\Money\Money::class)
-        ->and($object->getShippingCostStandardAmount())
+        ->toBeInt()
         ->toBe(0)
-        ->and($object->getShippingCostStandardValue())
-        ->toBe(0.00);
+        ->and($object->getShippingCostStandard(true))
+        ->toBeString()
+        ->toBe("0.00");
 });
 
 it('can get express shipping cost', function () {
     expect($this->object->getExpressCostStandard())
-        ->toBeInstanceOf(\Akaunting\Money\Money::class)
-        ->and($this->object->getExpressCostStandardAmount())
+        ->toBeInt()
         ->toBe(2199)
-        ->and($this->object->getExpressCostStandardValue())
-        ->toBe(21.99);
+        ->and($this->object->getExpressCostStandard(true))
+        ->toBeString()
+        ->toBe("21.99");
 });
 
 it('can get express costs with minimal values', function () {
     $object = new PharmacyResponseObject(json_decode($this->getPharmacyResponseObjectWithMinimumValues(), true));
 
     expect($object->getExpressCostStandard())
-        ->toBeInstanceOf(\Akaunting\Money\Money::class)
-        ->and($object->getExpressCostStandardAmount())
+        ->toBeInt()
         ->toBe(0)
-        ->and($object->getExpressCostStandardValue())
-        ->toBe(0.00);
+        ->and($object->getExpressCostStandard(true))
+        ->toBeString()
+        ->toBe("0.00");
 });
 
 it('can get local courier cost', function () {
     expect($this->object->getLocalCourierCostStandard())
-        ->toBeInstanceOf(\Akaunting\Money\Money::class)
-        ->and($this->object->getLocalCourierCostStandardAmount())
+        ->toBeInt()
         ->toBe(799)
-        ->and($this->object->getLocalCourierCostStandardValue())
-        ->toBe(7.99);
+        ->and($this->object->getLocalCourierCostStandard(true))
+        ->toBeString()
+        ->toBe("7.99");
 });
 
 it('can get local courier costs with minimal values', function () {
     $object = new PharmacyResponseObject(json_decode($this->getPharmacyResponseObjectWithMinimumValues(), true));
 
     expect($object->getLocalCourierCostStandard())
-        ->toBeInstanceOf(\Akaunting\Money\Money::class)
-        ->and($object->getLocalCourierCostStandardAmount())
+        ->toBeInt()
         ->toBe(0)
-        ->and($object->getLocalCourierCostStandardValue())
-        ->toBe(0.00);
+        ->and($object->getLocalCourierCostStandard(true))
+        ->toBeString()
+        ->toBe("0.00");
 });

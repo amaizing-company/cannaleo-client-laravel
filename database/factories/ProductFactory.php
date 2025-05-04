@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             'thc' => fake()->randomFloat(max: 100),
             'cbd' => fake()->randomFloat(max: 100),
             'available' => fake()->boolean(),
-            'price' => Money::EUR(fake()->randomNumber()),
+            'price' => fake()->randomNumber(),
             'category' => 'flower',
             'manufacturer' => fake()->company(),
             'grower' => fake()->company(),

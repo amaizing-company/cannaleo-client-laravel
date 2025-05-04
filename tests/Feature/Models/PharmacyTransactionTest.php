@@ -63,7 +63,7 @@ test('products relationship can be loaded', function () {
     $transaction = PharmacyTransaction::factory()->create();
 
     foreach ($products as $product) {
-        $transaction->products()->attach($product, ['price' => \Akaunting\Money\Money::EUR(100)]);
+        $transaction->products()->attach($product, ['price' => 100]);
     }
 
     expect($transaction->products)

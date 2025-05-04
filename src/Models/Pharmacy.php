@@ -28,9 +28,9 @@ use Illuminate\Support\Carbon;
  * @param  bool  $has_express
  * @param  bool  $has_local_courier
  * @param  bool  $has_pickup
- * @param  Money  $shipping_price
- * @param  Money  $express_price
- * @param  Money  $local_courier_price
+ * @param  int  $shipping_price
+ * @param  int  $express_price
+ * @param  int  $local_courier_price
  * @param  Carbon  $created_at
  * @param  Carbon  $updated_at
  */
@@ -49,9 +49,9 @@ class Pharmacy extends BaseModel implements PharmacyContract
             'has_express' => 'boolean',
             'has_local_courier' => 'boolean',
             'has_pickup' => 'boolean',
-            'shipping_price' => MoneyCast::class,
-            'express_price' => MoneyCast::class,
-            'local_courier_price' => MoneyCast::class,
+            'shipping_price' => 'integer',
+            'express_price' => 'integer',
+            'local_courier_price' => 'integer',
         ];
     }
 

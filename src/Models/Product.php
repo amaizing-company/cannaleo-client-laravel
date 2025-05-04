@@ -29,7 +29,7 @@ use Illuminate\Support\Carbon;
  * @param  float  $thc
  * @param  float  $cbd
  * @param  bool  $available
- * @param  Money  $price
+ * @param  int  $price
  * @param  string|null  $category
  * @param  string|null  $manufacturer
  * @param  string|null  $grower
@@ -51,7 +51,7 @@ class Product extends BaseModel implements ProductContract
     {
         return [
             'available' => 'boolean',
-            'price' => MoneyCast::class,
+            'price' => 'integer',
             'irradiated' => 'boolean',
         ];
     }

@@ -43,7 +43,7 @@ class ProductResponseObject extends DataResponseObject
 
     protected int|float $cbd;
 
-    protected Money $price;
+    protected int $price = 0;
 
     protected string $pharmacyName;
 
@@ -69,8 +69,6 @@ class ProductResponseObject extends DataResponseObject
 
     public function __construct(array $data)
     {
-        $this->price = static::initPriceParam();
-
         parent::__construct($data);
     }
 
@@ -104,19 +102,9 @@ class ProductResponseObject extends DataResponseObject
         return $this->cbd;
     }
 
-    public function getPrice(): Money
+    public function getPrice(bool $converted = false): int|string
     {
-        return $this->price;
-    }
-
-    public function getPriceAmount(): int
-    {
-        return (int) $this->getPrice()->getAmount();
-    }
-
-    public function getPriceValue(): float
-    {
-        return $this->getPrice()->getValue();
+        return $this->convertPrice($this->price, $converted);
     }
 
     public function getPharmacyName(): string
@@ -185,7 +173,7 @@ class ProductResponseObject extends DataResponseObject
         return $this;
     }
 
-    protected function price(float|int $value): static
+    protected function price(float|int|string $value): static
     {
         $this->parsePrice($this->price, $value);
 

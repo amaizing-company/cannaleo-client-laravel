@@ -15,7 +15,7 @@ use Illuminate\Support\Carbon;
  * @param  string  $id
  * @param  string  $pharmacy_transaction_id
  * @param  string  $product_id
- * @param  Money  $price
+ * @param  int  $price
  * @param  Carbon  $created_at
  * @param  Carbon  $updated_at
  */
@@ -45,7 +45,7 @@ class PharmacyTransactionProduct extends Pivot implements PharmacyTransactionPro
     protected function casts()
     {
         return [
-            'price' => MoneyCast::class,
+            'price' => 'integer',
         ];
     }
 }

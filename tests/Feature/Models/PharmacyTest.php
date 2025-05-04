@@ -42,9 +42,9 @@ test('pharmacy has correct casts', function () {
         ->has_express->toBe('boolean')
         ->has_local_courier->toBe('boolean')
         ->has_pickup->toBe('boolean')
-        ->shipping_price->toBe(MoneyCast::class)
-        ->express_price->toBe(MoneyCast::class)
-        ->local_courier_price->toBe(MoneyCast::class);
+        ->shipping_price->toBe('integer')
+        ->express_price->toBe('integer')
+        ->local_courier_price->toBe('integer');
 });
 
 // Relationship Tests
@@ -108,9 +108,9 @@ test('pharmacy attributes have correct types', function () {
         ->has_express->toBeFalse()
         ->has_local_courier->toBeFalse()
         ->has_pickup->toBeTrue()
-        ->shipping_price->toBeInstanceOf(Money::class)
-        ->express_price->toBeInstanceOf(Money::class)
-        ->local_courier_price->toBeInstanceOf(Money::class);
+        ->shipping_price->toBeInt()
+        ->express_price->toBeInt()
+        ->local_courier_price->toBeInt();
 });
 
 // Nullable Field Tests
@@ -189,17 +189,13 @@ test('pharmacy attributes can be mass assigned', function () {
         'zip_code' => '12345',
         'city' => 'Test City',
         'has_shipping' => true,
-        'shipping_price' => Money::EUR(1000),
+        'shipping_price' => 1000,
     ];
 
     $pharmacy = new Pharmacy($attributes);
 
     foreach ($attributes as $key => $value) {
-        if ($key === 'shipping_price') {
-            expect($pharmacy->$key)->toBeInstanceOf(Money::class);
-        } else {
-            expect($pharmacy->$key)->toBe($value);
-        }
+        expect($pharmacy->$key)->toBe($value);
     }
 });
 

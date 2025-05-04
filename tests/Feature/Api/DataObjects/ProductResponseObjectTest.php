@@ -50,11 +50,11 @@ it('can get cbd', function () {
 
 it('can get price', function () {
     expect($this->object->getPrice())
-        ->toBeInstanceOf(Akaunting\Money\Money::class)
-        ->and($this->object->getPriceAmount())
+        ->toBeInt()
         ->toBe(895)
-        ->and($this->object->getPriceValue())
-        ->toBe(8.95);
+        ->and($this->object->getPrice(true))
+        ->toBeString()
+        ->toBe("8.95");
 });
 
 it('can get pharmacy name', function () {

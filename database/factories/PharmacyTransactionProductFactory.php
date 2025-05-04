@@ -17,7 +17,7 @@ class PharmacyTransactionProductFactory extends Factory
         return [
             'pharmacy_transaction_id' => PharmacyTransaction::factory(),
             'product_id' => Product::factory(),
-            'price' => Money::EUR(fake()->randomNumber()),
+            'price' => fake()->randomNumber(),
         ];
     }
 }

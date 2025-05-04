@@ -34,10 +34,11 @@ test('product has correct casts', function () {
 
     expect($product->getCasts())
         ->toBeArray()
-        ->toHaveCount(3)
+        ->toHaveCount(4)
         ->available->toBe('boolean')
-        ->price->toBe(\Akaunting\Money\Casts\MoneyCast::class)
-        ->irradiated->toBe('boolean');
+        ->price->toBe('integer')
+        ->irradiated->toBe('boolean')
+        ->deleted_at->toBe('datetime');
 });
 
 // Relationship Tests
@@ -79,7 +80,7 @@ test('pharmacyTransactions relationship can be loaded', function () {
     $product = Product::factory()->create();
     $transaction = \AmaizingCompany\CannaleoClient\Models\PharmacyTransaction::factory()->create();
 
-    $transaction->products()->attach($product, ['price' => \Akaunting\Money\Money::EUR(100)]);
+    $transaction->products()->attach($product, ['price' => 100]);
 
     expect($product->pharmacyTransactions)
         ->toBeCollection()
@@ -100,7 +101,7 @@ test('product attributes have correct types', function () {
         ->thc->toBeFloat()
         ->cbd->toBeFloat()
         ->available->toBeBool()
-        ->price->toBeInstanceOf(Akaunting\Money\Money::class)
+        ->price->toBeInt()
         ->category->toBeString()
         ->manufacturer->toBeString()
         ->grower->toBeString()
