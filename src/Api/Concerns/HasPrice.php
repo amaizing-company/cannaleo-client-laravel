@@ -2,8 +2,6 @@
 
 namespace AmaizingCompany\CannaleoClient\Api\Concerns;
 
-use PrinsFrank\Standards\Currency\CurrencyAlpha3;
-
 trait HasPrice
 {
     protected static function parsePrice(&$param, float|int|string|null $value, bool $convert = true): int
@@ -15,6 +13,7 @@ trait HasPrice
         }
 
         $param = intval(round($value));
+
         return $param;
     }
 

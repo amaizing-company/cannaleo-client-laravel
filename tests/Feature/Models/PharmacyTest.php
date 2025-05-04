@@ -1,7 +1,5 @@
 <?php
 
-use Akaunting\Money\Casts\MoneyCast;
-use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Contracts\Models\Product;
 use AmaizingCompany\CannaleoClient\Models\Pharmacy;
 use Illuminate\Database\Eloquent\Relations\HasMany;

@@ -54,7 +54,7 @@ it('can get price', function () {
         ->toBe(895)
         ->and($this->object->getPrice(true))
         ->toBeString()
-        ->toBe("8.95");
+        ->toBe('8.95');
 });
 
 it('can get pharmacy name', function () {

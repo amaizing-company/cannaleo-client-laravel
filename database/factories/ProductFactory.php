@@ -2,7 +2,6 @@
 
 namespace AmaizingCompany\CannaleoClient\Database\Factories;
 
-use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Models\Pharmacy;
 use AmaizingCompany\CannaleoClient\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;

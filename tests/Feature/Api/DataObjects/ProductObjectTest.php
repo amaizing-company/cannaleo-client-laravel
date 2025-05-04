@@ -40,13 +40,13 @@ it('can handle price', function () {
         ->toBe(799)
         ->and($this->object->getPrice(true))
         ->toBeString()
-        ->toBe("7.99")
+        ->toBe('7.99')
         ->and($this->object->price(800)->getPrice())
         ->toBeInt()
         ->toBe(800)
         ->and($this->object->getPrice(true))
         ->toBeString()
-        ->toBe("8.00");
+        ->toBe('8.00');
 });
 
 it('can handle category', function () {

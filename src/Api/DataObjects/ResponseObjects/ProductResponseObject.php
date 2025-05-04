@@ -2,7 +2,6 @@
 
 namespace AmaizingCompany\CannaleoClient\Api\DataObjects\ResponseObjects;
 
-use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Api\Concerns\HasPrice;
 
 class ProductResponseObject extends DataResponseObject

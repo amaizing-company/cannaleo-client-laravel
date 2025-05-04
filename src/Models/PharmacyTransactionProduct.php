@@ -2,8 +2,6 @@
 
 namespace AmaizingCompany\CannaleoClient\Models;
 
-use Akaunting\Money\Casts\MoneyCast;
-use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Contracts\Models\PharmacyTransactionProduct as PharmacyTransactionProductContract;
 use AmaizingCompany\CannaleoClient\Support\DatabaseHelper;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;

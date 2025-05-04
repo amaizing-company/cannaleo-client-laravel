@@ -91,7 +91,7 @@ it('can get shipping costs', function () {
         ->toBe(799)
         ->and($this->object->getShippingCostStandard(true))
         ->toBeString()
-        ->toBe("7.99");
+        ->toBe('7.99');
 });
 
 it('can get shipping costs with minimal values', function () {
@@ -102,7 +102,7 @@ it('can get shipping costs with minimal values', function () {
         ->toBe(0)
         ->and($object->getShippingCostStandard(true))
         ->toBeString()
-        ->toBe("0.00");
+        ->toBe('0.00');
 });
 
 it('can get express shipping cost', function () {
@@ -111,7 +111,7 @@ it('can get express shipping cost', function () {
         ->toBe(2199)
         ->and($this->object->getExpressCostStandard(true))
         ->toBeString()
-        ->toBe("21.99");
+        ->toBe('21.99');
 });
 
 it('can get express costs with minimal values', function () {
@@ -122,7 +122,7 @@ it('can get express costs with minimal values', function () {
         ->toBe(0)
         ->and($object->getExpressCostStandard(true))
         ->toBeString()
-        ->toBe("0.00");
+        ->toBe('0.00');
 });
 
 it('can get local courier cost', function () {
@@ -131,7 +131,7 @@ it('can get local courier cost', function () {
         ->toBe(799)
         ->and($this->object->getLocalCourierCostStandard(true))
         ->toBeString()
-        ->toBe("7.99");
+        ->toBe('7.99');
 });
 
 it('can get local courier costs with minimal values', function () {
@@ -142,5 +142,5 @@ it('can get local courier costs with minimal values', function () {
         ->toBe(0)
         ->and($object->getLocalCourierCostStandard(true))
         ->toBeString()
-        ->toBe("0.00");
+        ->toBe('0.00');
 });

@@ -2,8 +2,6 @@
 
 namespace AmaizingCompany\CannaleoClient\Models;
 
-use Akaunting\Money\Casts\MoneyCast;
-use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Concerns\HasPharmacy;
 use AmaizingCompany\CannaleoClient\Contracts\Models\Pharmacy;
 use AmaizingCompany\CannaleoClient\Contracts\Models\PharmacyTransaction;
