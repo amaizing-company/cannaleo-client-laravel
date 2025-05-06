@@ -61,7 +61,7 @@ class CatalogSyncService extends SyncService implements SyncServiceContract
 
     /**
      * @param ProductResponseObject $item
-     * @return string[]
+     * @return array
      */
     public function createDataArray($item): array
     {
@@ -101,7 +101,7 @@ class CatalogSyncService extends SyncService implements SyncServiceContract
         $id = Arr::get($this->pharmaciesMap, $externalPharmacyId);
 
         if (empty($id)) {
-            $id = app(Pharmacy::class)->where('external_id', $externalPharmacyId)->pluck('id')->first();
+            $id = app(Pharmacy::class)->where('external_id', $externalPharmacyId)->pluck('id')->first(); // @phpstan-ignore larastan.noUnnecessaryCollectionCall
 
             $this->pharmaciesMap[$externalPharmacyId] = $id;
         }
@@ -143,6 +143,9 @@ class CatalogSyncService extends SyncService implements SyncServiceContract
 
         $products = static::getModel()::query()->whereIn($uniqueIdName, $this->seenIds)->select(['id', $uniqueIdName])->get();
 
+        /**
+         * @var \AmaizingCompany\CannaleoClient\Models\Product $product
+         */
         foreach ($products as $product) {
             $syncIds = [];
 

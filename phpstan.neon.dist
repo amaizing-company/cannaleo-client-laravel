@@ -23,4 +23,14 @@ parameters:
             paths:
                 - src/Models/BaseModel.php
 
+        -
+            identifier: staticMethod.notFound
+            paths:
+                - src/Services/SyncService.php
+
+        -
+            identifier: method.notFound
+            paths:
+                - src/Services/SyncService.php
+
 
