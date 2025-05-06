@@ -12,6 +12,7 @@ use AmaizingCompany\CannaleoClient\Contracts\Models\Terpen;
 use AmaizingCompany\CannaleoClient\Models\BaseModel;
 use AmaizingCompany\CannaleoClient\Models\PharmacyTransactionProduct;
 use AmaizingCompany\CannaleoClient\Models\ProductTerpen;
+use AmaizingCompany\CannaleoClient\Services\SyncService;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -143,3 +144,13 @@ arch('terpen model implements terpenContract interface')
 arch('product terpen model implements productTerpenContract interface')
     ->expect(ProductTerpen::class)
     ->toImplement(\AmaizingCompany\CannaleoClient\Contracts\Models\ProductTerpen::class);
+
+arch()
+    ->expect('AmaizingCompany\CannaleoClient\Services')
+    ->toBeClasses()
+    ->not->toBeAbstract()->ignoring(SyncService::class)
+    ->toImplement(\AmaizingCompany\CannaleoClient\Contracts\Services\SyncService::class)->ignoring(SyncService::class);
+
+arch()
+    ->expect(SyncService::class)
+    ->toBeAbstract();
