@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Http;
 test('pharmacies sync service can synchronize records with empty table', function () {
     $this->fakeHttpResponses();
 
-    $request = new PharmaciesRequest();
+    $request = new PharmaciesRequest;
 
     $service = new PharmaciesSyncService($request);
 
@@ -24,7 +24,7 @@ test('pharmacies sync service can synchronize records with empty table', functio
 test('ensure pharmacies sync service has correctly formatted data', function () {
     $this->fakeHttpResponses();
 
-    $request = new PharmaciesRequest();
+    $request = new PharmaciesRequest;
     $service = new PharmaciesSyncService($request);
     $service->sync();
 
@@ -96,13 +96,13 @@ test('pharmacies sync service can delete obsolete records', function () {
     Http::fake([
         Endpoint::GET_PHARMACIES->getRequestUrl() => Http::sequence()
             ->push($this->getFakedJsonResponseBody('pharmacies_data_1'))
-            ->push($this->getFakedJsonResponseBody('pharmacies_data_2'))
+            ->push($this->getFakedJsonResponseBody('pharmacies_data_2')),
     ]);
 
-    $request = new PharmaciesRequest();
+    $request = new PharmaciesRequest;
     $service = new PharmaciesSyncService($request);
 
-    for ($i=0;$i<2;$i++) {
+    for ($i = 0; $i < 2; $i++) {
         $service->sync();
     }
 
@@ -119,10 +119,10 @@ test('pharmacies sync service can update records', function () {
     Http::fake([
         Endpoint::GET_PHARMACIES->getRequestUrl() => Http::sequence()
             ->push($this->getFakedJsonResponseBody('pharmacies_data_1'))
-            ->push($this->getFakedJsonResponseBody('pharmacies_data_3'))
+            ->push($this->getFakedJsonResponseBody('pharmacies_data_3')),
     ]);
 
-    $request = new PharmaciesRequest();
+    $request = new PharmaciesRequest;
     $service = new PharmaciesSyncService($request);
 
     $service->sync();

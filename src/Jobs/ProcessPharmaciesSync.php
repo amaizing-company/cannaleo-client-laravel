@@ -10,7 +10,7 @@ class ProcessPharmaciesSync implements ShouldQueue
 {
     public function handle()
     {
-        $request = new PharmaciesRequest();
+        $request = new PharmaciesRequest;
 
         try {
             $response = $request->send();
@@ -25,7 +25,6 @@ class ProcessPharmaciesSync implements ShouldQueue
 
             return;
         }
-
 
     }
 }

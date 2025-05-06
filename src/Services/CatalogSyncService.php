@@ -20,15 +20,13 @@ use Illuminate\Support\Str;
 class CatalogSyncService extends SyncService implements SyncServiceContract
 {
     protected array $pharmaciesMap = [];
+
     protected array $terpenes = [];
 
     /**
-     * @param CatalogRequest $request
+     * @param  CatalogRequest  $request
      */
-    public function __construct(protected Request $request)
-    {
-
-    }
+    public function __construct(protected Request $request) {}
 
     public static function getModel(): Model
     {
@@ -41,8 +39,7 @@ class CatalogSyncService extends SyncService implements SyncServiceContract
     }
 
     /**
-     * @param CatalogResponse $response
-     * @return Collection
+     * @param  CatalogResponse  $response
      */
     public static function getResponseObjects(Response $response): Collection
     {
@@ -51,17 +48,16 @@ class CatalogSyncService extends SyncService implements SyncServiceContract
 
     public static function getErrorMessage(): string
     {
-        return "Product catalog synchronization failed.";
+        return 'Product catalog synchronization failed.';
     }
 
     public static function getSuccessMessage(): string
     {
-        return "Product catalog synchronization successful.";
+        return 'Product catalog synchronization successful.';
     }
 
     /**
-     * @param ProductResponseObject $item
-     * @return array
+     * @param  ProductResponseObject  $item
      */
     public function createDataArray($item): array
     {
@@ -79,7 +75,7 @@ class CatalogSyncService extends SyncService implements SyncServiceContract
             'price' => $item->getPrice(),
             'category' => $item->getCategory(),
             'manufacturer' => $item->getManufacturer(),
-            'grower' =>  $item->getGrower(),
+            'grower' => $item->getGrower(),
             'dominance' => $item->getDominance(),
             'irradiated' => $item->isIrradiated(),
             'strain' => $item->getStrain(),

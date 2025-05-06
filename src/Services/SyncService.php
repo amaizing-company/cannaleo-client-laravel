@@ -12,8 +12,11 @@ use Throwable;
 abstract class SyncService
 {
     protected Request $request;
+
     protected array $toUpdate = [];
+
     protected array $toCreate = [];
+
     protected array $seenIds = [];
 
     protected function reset(): void
@@ -55,7 +58,7 @@ abstract class SyncService
     {
         $this->logResponseError($response);
 
-        throw new Exception($this->getErrorMessage() . ': ' . $response->getMessage());
+        throw new Exception($this->getErrorMessage().': '.$response->getMessage());
     }
 
     protected function logResponseError($response): void
@@ -138,14 +141,14 @@ abstract class SyncService
 
     protected function createMissing(): void
     {
-        if (!empty($this->toCreate)) {
+        if (! empty($this->toCreate)) {
             static::getModel()::query()->insert($this->toCreate);
         }
     }
 
     protected function deleteObsolete(): void
     {
-        if (!empty($this->seenIds)) {
+        if (! empty($this->seenIds)) {
             static::getModel()::query()->whereNotIn(static::getUniqueIdName(), $this->seenIds)->delete();
         }
     }

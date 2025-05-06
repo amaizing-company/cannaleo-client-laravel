@@ -19,8 +19,7 @@ class PharmaciesSyncService extends SyncService implements SyncServiceContract
     public function __construct(protected PharmaciesRequest|Request $request) {}
 
     /**
-     * @param PharmacyResponseObject $item
-     * @return array
+     * @param  PharmacyResponseObject  $item
      */
     public function createDataArray($item): array
     {
@@ -42,7 +41,7 @@ class PharmaciesSyncService extends SyncService implements SyncServiceContract
             'express_price' => $item->getExpressCostStandard(),
             'local_courier_price' => $item->getLocalCourierCostStandard(),
             'updated_at' => Carbon::now(),
-            'deleted_at' => null
+            'deleted_at' => null,
         ];
     }
 
@@ -57,8 +56,7 @@ class PharmaciesSyncService extends SyncService implements SyncServiceContract
     }
 
     /**
-     * @param PharmaciesResponse $response
-     * @return Collection
+     * @param  PharmaciesResponse  $response
      */
     public static function getResponseObjects(Response $response): Collection
     {
