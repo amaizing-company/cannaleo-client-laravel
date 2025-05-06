@@ -83,7 +83,7 @@ class TestCase extends Orchestra
                 $this->getFakedJsonResponseBody('pharmacies_data_1')
             ),
             Endpoint::GET_CATALOG->value => Http::response(
-                $this->getFakedJsonResponseBody('catalog_data')
+                $this->getFakedJsonResponseBody('catalog_data_1')
             ),
             Endpoint::POST_PRESCRIPTION->value => Http::response(
                 $this->getFakedJsonResponseBody('prescription_data')

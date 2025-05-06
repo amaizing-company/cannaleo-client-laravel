@@ -1,0 +1,41 @@
+{
+    "error": false,
+    "message": "Result test pharmacies!",
+    "data": {
+        "pharmacies": [
+            {
+                "id": 1,
+                "cannabis_pharmacy_name": "Demo Medicon-Apotheke",
+                "official_name": "",
+                "domain": "test.demo",
+                "email": "",
+                "phone_number": "",
+                "street": "",
+                "plz": "",
+                "city": "",
+                "shipping": "no",
+                "express": "no",
+                "local_courier": "no",
+                "pickup": "no"
+            },
+            {
+                "id": 4,
+                "cannabis_pharmacy_name": "Test Apotheke",
+                "official_name": "Test Apotheke",
+                "domain": "test.demo",
+                "email": "test-apotheke@example.example",
+                "phone_number": "0123456789",
+                "street": "Test Street 20",
+                "plz": "12345",
+                "city": "Testtown",
+                "shipping": "yes",
+                "express": "yes",
+                "local_courier": "no",
+                "pickup": "yes",
+                "shipping_cost_standard": 7.99,
+                "express_cost_standard": 21.99
+            }
+        ],
+        "updated_at": "1745081441960"
+    }
+}
