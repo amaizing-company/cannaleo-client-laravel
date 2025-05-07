@@ -147,15 +147,14 @@ test('pharmacies sync service can update records', function () {
 });
 
 test('pharmacies sync service can handle api errors', function () {
-     Http::fake([
-         Endpoint::GET_PHARMACIES->getRequestUrl() =>
-             Http::response($this->getFakedJsonResponseBody('pharmacies_data_error')),
-     ]);
+    Http::fake([
+        Endpoint::GET_PHARMACIES->getRequestUrl() => Http::response($this->getFakedJsonResponseBody('pharmacies_data_error')),
+    ]);
 
-    $request = new PharmaciesRequest();
+    $request = new PharmaciesRequest;
     $service = new PharmaciesSyncService($request);
 
     expect(function () use ($service) {
         $service->sync();
-    })->toThrow(new Exception("Pharmacies synchronization failed: Test Error!"));
+    })->toThrow(new Exception('Pharmacies synchronization failed: Test Error!'));
 });

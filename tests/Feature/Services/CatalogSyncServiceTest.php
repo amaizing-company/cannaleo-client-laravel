@@ -172,11 +172,10 @@ test('catalog sync service can update records', function () {
 
 test('catalog sync service can handle api errors', function () {
     Http::fake([
-         Endpoint::GET_CATALOG->getRequestUrl() =>
-             Http::response($this->getFakedJsonResponseBody('catalog_data_error')),
+        Endpoint::GET_CATALOG->getRequestUrl() => Http::response($this->getFakedJsonResponseBody('catalog_data_error')),
     ]);
 
-    $request = new CatalogRequest();
+    $request = new CatalogRequest;
     $service = new CatalogSyncService($request);
 
     expect(function () use ($service) {
