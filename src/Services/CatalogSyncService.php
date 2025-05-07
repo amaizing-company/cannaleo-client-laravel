@@ -48,12 +48,12 @@ class CatalogSyncService extends SyncService implements SyncServiceContract
 
     public static function getErrorMessage(): string
     {
-        return 'Product catalog synchronization failed.';
+        return "Product catalog synchronization failed";
     }
 
     public static function getSuccessMessage(): string
     {
-        return 'Product catalog synchronization successful.';
+        return "Product catalog synchronization successful";
     }
 
     /**

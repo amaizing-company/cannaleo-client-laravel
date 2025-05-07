@@ -47,7 +47,7 @@ class PharmaciesSyncService extends SyncService implements SyncServiceContract
 
     public static function getErrorMessage(): string
     {
-        return 'Pharmacies synchronization failed.';
+        return 'Pharmacies synchronization failed';
     }
 
     public static function getModel(): Model
@@ -65,7 +65,7 @@ class PharmaciesSyncService extends SyncService implements SyncServiceContract
 
     public static function getSuccessMessage(): string
     {
-        return 'Pharmacies synchronization completed successfully.';
+        return 'Pharmacies synchronization completed successfully';
     }
 
     public static function getUniqueIdName(): string
