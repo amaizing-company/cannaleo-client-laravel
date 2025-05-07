@@ -145,3 +145,17 @@ test('pharmacies sync service can update records', function () {
         ->cannabis_pharmacy_name->toBe('Test Apotheke 40')
         ->official_name->toBe('Test Apotheke 40');
 });
+
+test('pharmacies sync service can handle api errors', function () {
+     Http::fake([
+         Endpoint::GET_PHARMACIES->getRequestUrl() =>
+             Http::response($this->getFakedJsonResponseBody('pharmacies_data_error')),
+     ]);
+
+    $request = new PharmaciesRequest();
+    $service = new PharmaciesSyncService($request);
+
+    expect(function () use ($service) {
+        $service->sync();
+    })->toThrow(new Exception("Pharmacies synchronization failed: Test Error!"));
+});

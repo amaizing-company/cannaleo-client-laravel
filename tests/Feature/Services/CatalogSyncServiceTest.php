@@ -112,8 +112,8 @@ test('catalog sync service has correctly formatted data', function () {
 
 test('catalog sync service can delete obsolete records', function () {
     Http::fake([
-        Endpoint::GET_PHARMACIES->value => Http::response($this->getFakedJsonResponseBody('pharmacies_data_1')),
-        Endpoint::GET_CATALOG->value => Http::sequence()
+        Endpoint::GET_PHARMACIES->getRequestUrl() => Http::response($this->getFakedJsonResponseBody('pharmacies_data_1')),
+        Endpoint::GET_CATALOG->getRequestUrl() => Http::sequence()
             ->push($this->getFakedJsonResponseBody('catalog_data_1'))
             ->push($this->getFakedJsonResponseBody('catalog_data_2')),
     ]);
@@ -138,8 +138,8 @@ test('catalog sync service can delete obsolete records', function () {
 
 test('catalog sync service can update records', function () {
     Http::fake([
-        Endpoint::GET_PHARMACIES->value => Http::response($this->getFakedJsonResponseBody('pharmacies_data_1')),
-        Endpoint::GET_CATALOG->value => Http::sequence()
+        Endpoint::GET_PHARMACIES->getRequestUrl() => Http::response($this->getFakedJsonResponseBody('pharmacies_data_1')),
+        Endpoint::GET_CATALOG->getRequestUrl() => Http::sequence()
             ->push($this->getFakedJsonResponseBody('catalog_data_1'))
             ->push($this->getFakedJsonResponseBody('catalog_data_3')),
     ]);
@@ -168,4 +168,18 @@ test('catalog sync service can update records', function () {
     expect($productsCount)->toBe(2)
         ->and($product)
         ->name->toBe('Testproduct with changed name');
+});
+
+test('catalog sync service can handle api errors', function () {
+    Http::fake([
+         Endpoint::GET_CATALOG->getRequestUrl() =>
+             Http::response($this->getFakedJsonResponseBody('catalog_data_error')),
+    ]);
+
+    $request = new CatalogRequest();
+    $service = new CatalogSyncService($request);
+
+    expect(function () use ($service) {
+        $service->sync();
+    })->toThrow(new Exception('Product catalog synchronization failed: Test Error!'));
 });
