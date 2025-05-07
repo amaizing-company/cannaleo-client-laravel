@@ -149,7 +149,8 @@ arch()
     ->expect('AmaizingCompany\CannaleoClient\Services')
     ->toBeClasses()
     ->not->toBeAbstract()->ignoring(SyncService::class)
-    ->toImplement(\AmaizingCompany\CannaleoClient\Contracts\Services\SyncService::class)->ignoring(SyncService::class);
+    ->toImplement(\AmaizingCompany\CannaleoClient\Contracts\Services\SyncService::class)
+    ->ignoring(SyncService::class);
 
 arch()
     ->expect(SyncService::class)
