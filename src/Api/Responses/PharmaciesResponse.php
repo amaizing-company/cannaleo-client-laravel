@@ -34,6 +34,10 @@ class PharmaciesResponse extends BaseResponse
         $pharmacies = $this->json('data.pharmacies');
         $collection = new Collection;
 
+        if (empty($pharmacies)) {
+            return $collection;
+        }
+
         foreach ($pharmacies as $pharmacy) {
             $collection->add(new PharmacyResponseObject($pharmacy));
         }
