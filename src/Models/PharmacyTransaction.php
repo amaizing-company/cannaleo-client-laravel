@@ -6,6 +6,7 @@ use AmaizingCompany\CannaleoClient\Contracts\Models\Pharmacy;
 use AmaizingCompany\CannaleoClient\Contracts\Models\PharmacyTransaction as PharmacyTransactionContract;
 use AmaizingCompany\CannaleoClient\Contracts\Models\PharmacyTransactionProduct;
 use AmaizingCompany\CannaleoClient\Contracts\Models\Product;
+use AmaizingCompany\CannaleoClient\Enums\PharmacyTransactionStatus;
 use AmaizingCompany\CannaleoClient\Support\DatabaseHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,6 +16,7 @@ use Illuminate\Support\Carbon;
 
 /**
  * @param  string  $id
+ * @param  PharmacyTransactionStatus $status
  * @param  string  $pharmacy_id
  * @param  Pharmacy  $pharmacy
  * @param  string  $order_type
@@ -33,6 +35,13 @@ class PharmacyTransaction extends BaseModel implements PharmacyTransactionContra
     use HasFactory;
 
     protected $guarded = [];
+
+    protected function casts(): array
+    {
+        return [
+            'status' => PharmacyTransactionStatus::class,
+        ];
+    }
 
     public function getTable(): string
     {
@@ -73,5 +82,26 @@ class PharmacyTransaction extends BaseModel implements PharmacyTransactionContra
     public function prescription(): MorphTo
     {
         return $this->morphTo('prescription');
+    }
+
+    public function pending(): static
+    {
+        $this->update(['status' => PharmacyTransactionStatus::PENDING]);
+
+        return $this;
+    }
+
+    public function success(): static
+    {
+        $this->update(['status' => PharmacyTransactionStatus::SUCCESS]);
+
+        return $this;
+    }
+
+    public function failed(): static
+    {
+        $this->update(['status' => PharmacyTransactionStatus::FAILED]);
+
+        return $this;
     }
 }

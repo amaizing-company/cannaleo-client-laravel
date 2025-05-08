@@ -2,6 +2,7 @@
 
 namespace AmaizingCompany\CannaleoClient\Database\Factories;
 
+use AmaizingCompany\CannaleoClient\Enums\PharmacyTransactionStatus;
 use AmaizingCompany\CannaleoClient\Models\Pharmacy;
 use AmaizingCompany\CannaleoClient\Models\PharmacyTransaction;
 use AmaizingCompany\CannaleoClient\Tests\Models\Customer;
@@ -17,6 +18,7 @@ class PharmacyTransactionFactory extends Factory
     public function definition()
     {
         return [
+            'status' => fake()->randomElement(PharmacyTransactionStatus::cases()),
             'pharmacy_id' => Pharmacy::factory(),
             'order_type' => (new Order)->getMorphClass(),
             'order_id' => Order::factory(),
