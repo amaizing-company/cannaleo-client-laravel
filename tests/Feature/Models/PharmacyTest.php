@@ -30,11 +30,11 @@ test('pharmacy has correct table name', function () {
 // Cast Tests
 test('pharmacy has correct casts', function () {
     $pharmacy = new Pharmacy;
-    $casts = $pharmacy->casts();
+    $casts = $pharmacy->getCasts();
 
     expect($casts)
         ->toBeArray()
-        ->toHaveCount(8)
+        ->toHaveCount(9)
         ->external_id->toBe('integer')
         ->has_shipping->toBe('boolean')
         ->has_express->toBe('boolean')
@@ -42,7 +42,8 @@ test('pharmacy has correct casts', function () {
         ->has_pickup->toBe('boolean')
         ->shipping_price->toBe('integer')
         ->express_price->toBe('integer')
-        ->local_courier_price->toBe('integer');
+        ->local_courier_price->toBe('integer')
+        ->deleted_at->toBe('datetime');
 });
 
 // Relationship Tests
