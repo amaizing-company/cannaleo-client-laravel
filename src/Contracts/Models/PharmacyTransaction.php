@@ -23,4 +23,7 @@ interface PharmacyTransaction
     public function doctor(): MorphTo;
 
     public function prescription(): MorphTo;
+    public function failed(): static;
+    public function pending(): static;
+    public function success(): static;
 }
