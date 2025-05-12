@@ -26,11 +26,13 @@ parameters:
         -
             identifier: staticMethod.notFound
             paths:
-                - src/Services/SyncService.php
+                - src/Services/SyncServices/SyncService.php
+                - src/Services/RequestService.php
 
         -
             identifier: method.notFound
             paths:
-                - src/Services/SyncService.php
+                - src/Services/SyncServices/SyncService.php
+                - src/Services/RequestService.php
 
 

@@ -97,7 +97,7 @@ class CatalogSyncService extends SyncService implements SyncServiceContract
         $id = Arr::get($this->pharmaciesMap, $externalPharmacyId);
 
         if (empty($id)) {
-            $id = app(Pharmacy::class)->where('external_id', $externalPharmacyId)->pluck('id')->first(); // @phpstan-ignore larastan.noUnnecessaryCollectionCall
+            $id = app(Pharmacy::class)->where('external_id', $externalPharmacyId)->pluck('id')->first();
 
             $this->pharmaciesMap[$externalPharmacyId] = $id;
         }
