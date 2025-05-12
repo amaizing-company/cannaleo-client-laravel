@@ -10,12 +10,12 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Support\Carbon;
 
 /**
- * @param  string  $id
- * @param  string  $pharmacy_transaction_id
- * @param  string  $product_id
- * @param  int  $price
- * @param  Carbon  $created_at
- * @param  Carbon  $updated_at
+ * @property  string  $id
+ * @property  string  $pharmacy_transaction_id
+ * @property  string  $product_id
+ * @property  int  $price
+ * @property  Carbon  $created_at
+ * @property  Carbon  $updated_at
  */
 class PharmacyTransactionProduct extends Pivot implements PharmacyTransactionProductContract
 {
