@@ -4,7 +4,6 @@ namespace AmaizingCompany\CannaleoClient\Commands;
 
 use AmaizingCompany\CannaleoClient\Api\Requests\ApiStatusRequest;
 use Illuminate\Console\Command;
-use Illuminate\Support\Carbon;
 
 class ApiStatusCommand extends Command
 {
@@ -15,10 +14,11 @@ class ApiStatusCommand extends Command
     public function handle(): int
     {
         try {
-            $request = new ApiStatusRequest();
+            $request = new ApiStatusRequest;
             $response = $request->send()->throw();
         } catch (\Exception $exception) {
             $this->error($exception->getMessage());
+
             return self::FAILURE;
         }
 
@@ -28,8 +28,8 @@ class ApiStatusCommand extends Command
 
         $this->newLine();
         $this->info($response->getLabel());
-        $this->info('Uptime: ' . $uptimeForHumans . ' (' . $uptimeInSeconds . ' s)');
-        $this->info('Version: ' . $response->getVersion());
+        $this->info('Uptime: '.$uptimeForHumans.' ('.$uptimeInSeconds.' s)');
+        $this->info('Version: '.$response->getVersion());
         $this->newLine();
 
         return self::SUCCESS;

@@ -15,20 +15,20 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Carbon;
 
 /**
- * @property  string  $id
- * @property  PharmacyTransactionStatus $status
- * @property  string  $pharmacy_id
- * @property  Pharmacy  $pharmacy
- * @property  string  $order_type
- * @property  string  $order_id
- * @property  string  $customer_type
- * @property  string  $customer_id
- * @property  string  $doctor_type
- * @property  string  $doctor_id
- * @property  string  $prescription_type
- * @property  string  $prescription_id
- * @property  Carbon  $created_at
- * @property  Carbon  $updated_at
+ * @property string $id
+ * @property PharmacyTransactionStatus $status
+ * @property string $pharmacy_id
+ * @property Pharmacy $pharmacy
+ * @property string $order_type
+ * @property string $order_id
+ * @property string $customer_type
+ * @property string $customer_id
+ * @property string $doctor_type
+ * @property string $doctor_id
+ * @property string $prescription_type
+ * @property string $prescription_id
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  */
 class PharmacyTransaction extends BaseModel implements PharmacyTransactionContract
 {

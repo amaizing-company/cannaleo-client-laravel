@@ -12,25 +12,25 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
 /**
- * @property  string  $id
- * @property  int  $external_id
- * @property  string|null  $cannabis_pharmacy_name
- * @property  string|null  $official_name
- * @property  string|null  $domain
- * @property  string|null  $email
- * @property  string|null  $phone
- * @property  string|null  $street
- * @property  string|null  $zip_code
- * @property  string|null  $city
- * @property  bool  $has_shipping
- * @property  bool  $has_express
- * @property  bool  $has_local_courier
- * @property  bool  $has_pickup
- * @property  int  $shipping_price
- * @property  int  $express_price
- * @property  int  $local_courier_price
- * @property  Carbon  $created_at
- * @property  Carbon  $updated_at
+ * @property string $id
+ * @property int $external_id
+ * @property string|null $cannabis_pharmacy_name
+ * @property string|null $official_name
+ * @property string|null $domain
+ * @property string|null $email
+ * @property string|null $phone
+ * @property string|null $street
+ * @property string|null $zip_code
+ * @property string|null $city
+ * @property bool $has_shipping
+ * @property bool $has_express
+ * @property bool $has_local_courier
+ * @property bool $has_pickup
+ * @property int $shipping_price
+ * @property int $express_price
+ * @property int $local_courier_price
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  */
 class Pharmacy extends BaseModel implements PharmacyContract
 {

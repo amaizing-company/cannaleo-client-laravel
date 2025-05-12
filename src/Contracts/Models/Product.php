@@ -17,5 +17,6 @@ interface Product
     public function terpenes(): BelongsToMany;
 
     public function pharmacyTransactions(): BelongsToMany;
+
     public function getProductObject(): ProductObject;
 }

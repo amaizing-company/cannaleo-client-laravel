@@ -11,6 +11,8 @@ use Illuminate\Support\Carbon;
 interface CannaleoPrescription
 {
     public function getFileContents(): string;
+
     public function getSignatureCity(): string;
+
     public function getSignatureDate(): Carbon;
 }

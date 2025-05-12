@@ -18,25 +18,25 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
 /**
- * @property   string  $id
- * @property  string  $pharmacy_id
- * @property  Pharmacy  $pharmacy
- * @property  string  $external_id
- * @property  string  $name
- * @property  string|null  $genetic
- * @property  string|null  $country
- * @property  float  $thc
- * @property  float  $cbd
- * @property  bool  $available
- * @property  int  $price
- * @property  string|null  $category
- * @property  string|null  $manufacturer
- * @property  string|null  $grower
- * @property  string|null  $dominance
- * @property  bool  $irradiated
- * @property  string|null  $strain
- * @property  Carbon  $created_at
- * @property  Carbon  $updated_at
+ * @property string $id
+ * @property string $pharmacy_id
+ * @property Pharmacy $pharmacy
+ * @property string $external_id
+ * @property string $name
+ * @property string|null $genetic
+ * @property string|null $country
+ * @property float $thc
+ * @property float $cbd
+ * @property bool $available
+ * @property int $price
+ * @property string|null $category
+ * @property string|null $manufacturer
+ * @property string|null $grower
+ * @property string|null $dominance
+ * @property bool $irradiated
+ * @property string|null $strain
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  */
 class Product extends BaseModel implements ProductContract
 {

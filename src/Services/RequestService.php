@@ -4,7 +4,6 @@ namespace AmaizingCompany\CannaleoClient\Services;
 
 use AmaizingCompany\CannaleoClient\Api\Contracts\Request;
 use Exception;
-use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Throwable;

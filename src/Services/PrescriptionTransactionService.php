@@ -22,12 +22,7 @@ use Illuminate\Support\Collection;
 class PrescriptionTransactionService extends RequestService
 {
     /**
-     * @param Pharmacy $pharmacy
-     * @param CannaleoPrescription $prescription
-     * @param CannaleoCustomer $customer
-     * @param CannaleoDoctor $doctor
-     * @param CannaleoOrder $order
-     * @param Collection<ProductObject> $products
+     * @param  Collection<ProductObject>  $products
      */
     public function __construct(
         protected Pharmacy $pharmacy,
@@ -101,10 +96,10 @@ class PrescriptionTransactionService extends RequestService
             'status' => PharmacyTransactionStatus::PENDING,
             'pharmacy_id' => $this->pharmacy->getKey(),
             'order_type' => $this->order->getMorphClass(),
-            'order_id' =>  $this->order->getKey(),
+            'order_id' => $this->order->getKey(),
             'customer_type' => $this->customer->getMorphClass(),
             'customer_id' => $this->customer->getKey(),
-            'doctor_type' =>  $this->doctor->getMorphClass(),
+            'doctor_type' => $this->doctor->getMorphClass(),
             'doctor_id' => $this->doctor->getKey(),
             'prescription_type' => $this->prescription->getMorphClass(),
             'prescription_id' => $this->prescription->getKey(),
@@ -117,7 +112,7 @@ class PrescriptionTransactionService extends RequestService
             $externalProductIds[] = $product->getId();
         }
 
-        if (!isset($externalProductIds)) {
+        if (! isset($externalProductIds)) {
             return;
         }
 
@@ -132,7 +127,7 @@ class PrescriptionTransactionService extends RequestService
             ];
         }
 
-        if (!isset($productsToSync)) {
+        if (! isset($productsToSync)) {
             return;
         }
 

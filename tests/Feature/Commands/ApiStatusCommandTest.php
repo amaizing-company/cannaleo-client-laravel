@@ -22,7 +22,7 @@ test('command has correct output', function () {
 
 test('command can handle errors', function () {
     Http::fake([
-         Endpoint::GET_SERVICE_STATUS->getRequestUrl() => Http::response('', 500),
+        Endpoint::GET_SERVICE_STATUS->getRequestUrl() => Http::response('', 500),
     ]);
 
     $this->artisan('cannaleo:status')
