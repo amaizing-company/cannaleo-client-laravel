@@ -3,7 +3,7 @@
 use AmaizingCompany\CannaleoClient\Api\Enums\Endpoint;
 use AmaizingCompany\CannaleoClient\Api\Requests\PharmaciesRequest;
 use AmaizingCompany\CannaleoClient\Models\Pharmacy;
-use AmaizingCompany\CannaleoClient\Services\PharmaciesSyncService;
+use AmaizingCompany\CannaleoClient\Services\SyncServices\PharmaciesSyncService;
 use Illuminate\Support\Facades\Http;
 
 test('pharmacies sync service can synchronize records with empty table', function () {

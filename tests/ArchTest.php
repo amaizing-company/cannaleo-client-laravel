@@ -13,6 +13,7 @@ use AmaizingCompany\CannaleoClient\Models\BaseModel;
 use AmaizingCompany\CannaleoClient\Models\PharmacyTransactionProduct;
 use AmaizingCompany\CannaleoClient\Models\ProductTerpen;
 use AmaizingCompany\CannaleoClient\Services\SyncService;
+use AmaizingCompany\CannaleoClient\Services\SyncServices\SyncService;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

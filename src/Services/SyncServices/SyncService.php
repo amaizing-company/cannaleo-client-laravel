@@ -1,18 +1,14 @@
 <?php
 
-namespace AmaizingCompany\CannaleoClient\Services;
+namespace AmaizingCompany\CannaleoClient\Services\SyncServices;
 
 use AmaizingCompany\CannaleoClient\Api\Contracts\Request;
+use AmaizingCompany\CannaleoClient\Services\RequestService;
 use Exception;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-use Throwable;
 
-abstract class SyncService
+abstract class SyncService extends RequestService
 {
-    protected Request $request;
-
     protected array $toUpdate = [];
 
     protected array $toCreate = [];
@@ -59,36 +55,6 @@ abstract class SyncService
         $this->logResponseError($response);
 
         throw new Exception($this->getErrorMessage().': '.$response->getMessage());
-    }
-
-    protected function logResponseError($response): void
-    {
-        Log::error(static::getErrorMessage(), [
-            'error' => $response->getMessage(),
-            'trace' => $response->json(),
-        ]);
-    }
-
-    protected function executeInTransaction(callable $callback): void
-    {
-        try {
-            DB::beginTransaction();
-            $callback();
-            DB::commit();
-            Log::info(static::getSuccessMessage());
-        } catch (Throwable $exception) {
-            DB::rollBack();
-            $this->logError($exception);
-            throw $exception;
-        }
-    }
-
-    protected function logError(Throwable $exception): void
-    {
-        Log::error(static::getErrorMessage(), [
-            'error' => $exception->getMessage(),
-            'trace' => $exception->getTraceAsString(),
-        ]);
     }
 
     protected function prepareData(Collection $items, array $existingIds): void

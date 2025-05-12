@@ -5,8 +5,8 @@ use AmaizingCompany\CannaleoClient\Api\Requests\CatalogRequest;
 use AmaizingCompany\CannaleoClient\Api\Requests\PharmaciesRequest;
 use AmaizingCompany\CannaleoClient\Models\Product;
 use AmaizingCompany\CannaleoClient\Models\Terpen;
-use AmaizingCompany\CannaleoClient\Services\CatalogSyncService;
-use AmaizingCompany\CannaleoClient\Services\PharmaciesSyncService;
+use AmaizingCompany\CannaleoClient\Services\SyncServices\CatalogSyncService;
+use AmaizingCompany\CannaleoClient\Services\SyncServices\PharmaciesSyncService;
 use Illuminate\Support\Facades\Http;
 
 test('catalog sync service  can synchronize records with empty table', function () {

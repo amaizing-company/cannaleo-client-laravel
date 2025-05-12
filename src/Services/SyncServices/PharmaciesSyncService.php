@@ -1,6 +1,6 @@
 <?php
 
-namespace AmaizingCompany\CannaleoClient\Services;
+namespace AmaizingCompany\CannaleoClient\Services\SyncServices;
 
 use AmaizingCompany\CannaleoClient\Api\Contracts\Request;
 use AmaizingCompany\CannaleoClient\Api\DataObjects\ResponseObjects\PharmacyResponseObject;
