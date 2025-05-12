@@ -8,7 +8,8 @@ uses(ApiTestCase::class)->in(__DIR__.'/Feature/Api');
 
 uses(PackageTestCase::class)->in(
     __DIR__.'/Feature/Models',
-    __DIR__.'/Feature/Services'
+    __DIR__.'/Feature/Services',
+    __DIR__.'/Feature/Commands'
 );
 
 uses(RefreshDatabase::class)->in(
@@ -18,3 +19,4 @@ uses(RefreshDatabase::class)->in(
 
 pest()->group('package', 'models')->in(__DIR__.'/Feature/Models');
 pest()->group('package', 'services')->in(__DIR__.'/Feature/Services');
+pest()->group('package', 'commands')->in(__DIR__.'/Feature/Commands');

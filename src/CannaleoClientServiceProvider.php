@@ -2,7 +2,7 @@
 
 namespace AmaizingCompany\CannaleoClient;
 
-use AmaizingCompany\CannaleoClient\Commands\CannaleoClientCommand;
+use AmaizingCompany\CannaleoClient\Commands\ApiStatusCommand;
 use AmaizingCompany\CannaleoClient\Contracts\Models\Pharmacy;
 use AmaizingCompany\CannaleoClient\Contracts\Models\PharmacyTransaction;
 use AmaizingCompany\CannaleoClient\Contracts\Models\PharmacyTransactionProduct;
@@ -32,7 +32,7 @@ class CannaleoClientServiceProvider extends PackageServiceProvider
                 'create_cannaleo_pharmacy_transactions_table',
                 'create_cannaleo_pharmacy_transactions_products_table'
             )
-            ->hasCommand(CannaleoClientCommand::class);
+            ->hasCommand(ApiStatusCommand::class);
     }
 
     public function packageRegistered(): void
