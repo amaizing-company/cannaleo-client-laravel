@@ -2,6 +2,7 @@
 
 namespace AmaizingCompany\CannaleoClient\Models;
 
+use AmaizingCompany\CannaleoClient\Api\DataObjects\RequestObjects\ProductObject;
 use AmaizingCompany\CannaleoClient\Concerns\HasPharmacy;
 use AmaizingCompany\CannaleoClient\Contracts\Models\Pharmacy;
 use AmaizingCompany\CannaleoClient\Contracts\Models\PharmacyTransaction;
@@ -82,5 +83,16 @@ class Product extends BaseModel implements ProductContract
         )
             ->using(app(PharmacyTransactionProduct::class)->getMorphClass())
             ->withTimestamps();
+    }
+
+    public function getProductObject(int $quantity = 1): ProductObject
+    {
+        return new ProductObject(
+            $this->external_id,
+            $this->name,
+            $this->price,
+            $this->category,
+            $quantity
+        );
     }
 }
