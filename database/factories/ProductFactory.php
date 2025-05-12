@@ -2,7 +2,6 @@
 
 namespace AmaizingCompany\CannaleoClient\Database\Factories;
 
-use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Models\Pharmacy;
 use AmaizingCompany\CannaleoClient\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -22,7 +21,7 @@ class ProductFactory extends Factory
             'thc' => fake()->randomFloat(max: 100),
             'cbd' => fake()->randomFloat(max: 100),
             'available' => fake()->boolean(),
-            'price' => Money::EUR(fake()->randomNumber()),
+            'price' => fake()->randomNumber(),
             'category' => 'flower',
             'manufacturer' => fake()->company(),
             'grower' => fake()->company(),

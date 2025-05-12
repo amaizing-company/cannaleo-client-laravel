@@ -2,8 +2,6 @@
 
 namespace AmaizingCompany\CannaleoClient\Models;
 
-use Akaunting\Money\Casts\MoneyCast;
-use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Contracts\Models\PharmacyTransactionProduct as PharmacyTransactionProductContract;
 use AmaizingCompany\CannaleoClient\Support\DatabaseHelper;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
@@ -12,12 +10,12 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Support\Carbon;
 
 /**
- * @param  string  $id
- * @param  string  $pharmacy_transaction_id
- * @param  string  $product_id
- * @param  Money  $price
- * @param  Carbon  $created_at
- * @param  Carbon  $updated_at
+ * @property string $id
+ * @property string $pharmacy_transaction_id
+ * @property string $product_id
+ * @property int $price
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  */
 class PharmacyTransactionProduct extends Pivot implements PharmacyTransactionProductContract
 {
@@ -45,7 +43,7 @@ class PharmacyTransactionProduct extends Pivot implements PharmacyTransactionPro
     protected function casts()
     {
         return [
-            'price' => MoneyCast::class,
+            'price' => 'integer',
         ];
     }
 }

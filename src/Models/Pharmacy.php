@@ -2,44 +2,44 @@
 
 namespace AmaizingCompany\CannaleoClient\Models;
 
-use Akaunting\Money\Casts\MoneyCast;
-use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Contracts\Models\Pharmacy as PharmacyContract;
 use AmaizingCompany\CannaleoClient\Contracts\Models\PharmacyTransaction;
 use AmaizingCompany\CannaleoClient\Contracts\Models\Product;
 use AmaizingCompany\CannaleoClient\Support\DatabaseHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
 /**
- * @param  string  $id
- * @param  int  $external_id
- * @param  string|null  $cannabis_pharmacy_name
- * @param  string|null  $official_name
- * @param  string|null  $domain
- * @param  string|null  $email
- * @param  string|null  $phone
- * @param  string|null  $street
- * @param  string|null  $zip_code
- * @param  string|null  $city
- * @param  bool  $has_shipping
- * @param  bool  $has_express
- * @param  bool  $has_local_courier
- * @param  bool  $has_pickup
- * @param  Money  $shipping_price
- * @param  Money  $express_price
- * @param  Money  $local_courier_price
- * @param  Carbon  $created_at
- * @param  Carbon  $updated_at
+ * @property string $id
+ * @property int $external_id
+ * @property string|null $cannabis_pharmacy_name
+ * @property string|null $official_name
+ * @property string|null $domain
+ * @property string|null $email
+ * @property string|null $phone
+ * @property string|null $street
+ * @property string|null $zip_code
+ * @property string|null $city
+ * @property bool $has_shipping
+ * @property bool $has_express
+ * @property bool $has_local_courier
+ * @property bool $has_pickup
+ * @property int $shipping_price
+ * @property int $express_price
+ * @property int $local_courier_price
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  */
 class Pharmacy extends BaseModel implements PharmacyContract
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $guarded = [];
 
-    public function casts(): array
+    protected function casts(): array
     {
         return [
             'external_id' => 'integer',
@@ -47,9 +47,9 @@ class Pharmacy extends BaseModel implements PharmacyContract
             'has_express' => 'boolean',
             'has_local_courier' => 'boolean',
             'has_pickup' => 'boolean',
-            'shipping_price' => MoneyCast::class,
-            'express_price' => MoneyCast::class,
-            'local_courier_price' => MoneyCast::class,
+            'shipping_price' => 'integer',
+            'express_price' => 'integer',
+            'local_courier_price' => 'integer',
         ];
     }
 

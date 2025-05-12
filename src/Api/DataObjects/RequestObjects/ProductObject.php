@@ -2,7 +2,6 @@
 
 namespace AmaizingCompany\CannaleoClient\Api\DataObjects\RequestObjects;
 
-use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Api\Concerns\HasPrice;
 use AmaizingCompany\CannaleoClient\Api\Contracts\DataRequestObject as DataRequestObjectContract;
 
@@ -14,16 +13,14 @@ class ProductObject extends DataRequestObject implements DataRequestObjectContra
 
     protected string $name;
 
-    protected Money $price;
+    protected int $price = 0;
 
     protected string $category;
 
     protected int $quantity;
 
-    public function __construct(string $id, string $name, int|float $price, string $category, int $quantity)
+    public function __construct(string $id, string $name, int $price, string $category, int $quantity)
     {
-        $this->price = static::initPriceParam();
-
         $this->id($id);
         $this->name($name);
         $this->price($price);
@@ -55,24 +52,14 @@ class ProductObject extends DataRequestObject implements DataRequestObjectContra
         return $this;
     }
 
-    public function getPrice(): Money
+    public function getPrice(bool $converted = false): int|string
     {
-        return $this->price;
+        return $this->convertPrice($this->price, $converted);
     }
 
-    public function getPriceValue(): float
+    public function price(int $price): static
     {
-        return $this->getPrice()->getValue();
-    }
-
-    public function getPriceAmount(): int
-    {
-        return (int) $this->getPrice()->getAmount();
-    }
-
-    public function price(int|float $price): static
-    {
-        $this->parsePrice($this->price, $price);
+        $this->parsePrice($this->price, $price, false);
 
         return $this;
     }
@@ -106,7 +93,7 @@ class ProductObject extends DataRequestObject implements DataRequestObjectContra
         return [
             'id' => $this->getId(),
             'name' => $this->getName(),
-            'price' => $this->getPriceValue(),
+            'price' => $this->getPrice(true),
             'category' => $this->getCategory(),
             'quantity' => $this->getQuantity(),
         ];

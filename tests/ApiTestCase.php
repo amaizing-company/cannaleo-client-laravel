@@ -2,38 +2,8 @@
 
 namespace AmaizingCompany\CannaleoClient\Tests;
 
-use AmaizingCompany\CannaleoClient\Api\Enums\Endpoint;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Http;
-
-use function Orchestra\Testbench\package_path;
-
 class ApiTestCase extends TestCase
 {
-    public function fakeHttpResponses()
-    {
-        $map = $this->getResponseHelperMap();
-        foreach (Endpoint::cases() as $endpoint) {
-            $body = file_get_contents(
-                package_path('tests/Fixtures/Helpers/'.Arr::get($map, $endpoint->value).'.json')
-            );
-
-            $responses[$endpoint->getRequestUrl()] = Http::response($body);
-        }
-
-        Http::fake($responses ?? []);
-    }
-
-    public function getResponseHelperMap(): array
-    {
-        return [
-            Endpoint::GET_SERVICE_STATUS->value => 'api_status_data',
-            Endpoint::GET_PHARMACIES->value => 'pharmacies_data',
-            Endpoint::GET_CATALOG->value => 'catalog_data',
-            Endpoint::POST_PRESCRIPTION->value => 'prescription_data',
-        ];
-    }
-
     public function getPharmacyResponseObject(): string
     {
         return json_encode([

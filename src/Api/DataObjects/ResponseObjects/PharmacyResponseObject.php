@@ -2,7 +2,6 @@
 
 namespace AmaizingCompany\CannaleoClient\Api\DataObjects\ResponseObjects;
 
-use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Api\Concerns\HasPrice;
 
 class PharmacyResponseObject extends DataResponseObject
@@ -54,20 +53,11 @@ class PharmacyResponseObject extends DataResponseObject
 
     protected bool $pickup = false;
 
-    protected Money $shippingCostStandard;
+    protected int $shippingCostStandard = 0;
 
-    protected Money $expressCostStandard;
+    protected int $expressCostStandard = 0;
 
-    protected Money $localCourierCostStandard;
-
-    public function __construct(array $data)
-    {
-        $this->shippingCostStandard = static::initPriceParam();
-        $this->expressCostStandard = static::initPriceParam();
-        $this->localCourierCostStandard = static::initPriceParam();
-
-        parent::__construct($data);
-    }
+    protected int $localCourierCostStandard = 0;
 
     public function getId(): int
     {
@@ -134,49 +124,19 @@ class PharmacyResponseObject extends DataResponseObject
         return $this->pickup ?? false;
     }
 
-    public function getShippingCostStandard(): Money
+    public function getShippingCostStandard(bool $converted = false): int|string
     {
-        return $this->shippingCostStandard;
+        return $this->convertPrice($this->shippingCostStandard, $converted);
     }
 
-    public function getShippingCostStandardValue(): float
+    public function getExpressCostStandard(bool $converted = false): int|string
     {
-        return $this->getShippingCostStandard()->getValue();
+        return $this->convertPrice($this->expressCostStandard, $converted);
     }
 
-    public function getShippingCostStandardAmount(): int
+    public function getLocalCourierCostStandard(bool $converted = false): int|string
     {
-        return (int) $this->getShippingCostStandard()->getAmount();
-    }
-
-    public function getExpressCostStandard(): Money
-    {
-        return $this->expressCostStandard;
-    }
-
-    public function getExpressCostStandardValue(): float
-    {
-        return $this->getExpressCostStandard()->getValue();
-    }
-
-    public function getExpressCostStandardAmount(): int
-    {
-        return (int) $this->getExpressCostStandard()->getAmount();
-    }
-
-    public function getLocalCourierCostStandard(): Money
-    {
-        return $this->localCourierCostStandard;
-    }
-
-    public function getLocalCourierCostStandardValue(): float
-    {
-        return $this->getLocalCourierCostStandard()->getValue();
-    }
-
-    public function getLocalCourierCostStandardAmount(): int
-    {
-        return $this->getLocalCourierCostStandard()->getAmount();
+        return $this->convertPrice($this->localCourierCostStandard, $converted);
     }
 
     protected function shipping(bool|string $value): static
@@ -207,21 +167,21 @@ class PharmacyResponseObject extends DataResponseObject
         return $this;
     }
 
-    protected function shippingCostStandard(int|float|null $value): static
+    protected function shippingCostStandard(int|float|string|null $value): static
     {
         $this->parsePrice($this->shippingCostStandard, $value);
 
         return $this;
     }
 
-    protected function expressCostStandard(int|float|null $value): static
+    protected function expressCostStandard(int|float|string|null $value): static
     {
         $this->parsePrice($this->expressCostStandard, $value);
 
         return $this;
     }
 
-    protected function localCourierCostStandard(int|float|null $value): static
+    protected function localCourierCostStandard(int|float|string|null $value): static
     {
         $this->parsePrice($this->localCourierCostStandard, $value);
 

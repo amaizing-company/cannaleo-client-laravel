@@ -4,6 +4,7 @@ namespace AmaizingCompany\CannaleoClient\Database\Factories;
 
 use AmaizingCompany\CannaleoClient\Tests\Models\Prescription;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Http\UploadedFile;
 
 class PrescriptionFactory extends Factory
 {
@@ -12,7 +13,9 @@ class PrescriptionFactory extends Factory
     public function definition()
     {
         return [
-            'path' => base_path('tests/Fixtures/data/Test_PDF.pdf'),
+            'path' => UploadedFile::fake()->create('document.pdf'),
+            'signature_city' => fake()->city(),
+            'signature_date' => fake()->dateTime(),
         ];
     }
 }

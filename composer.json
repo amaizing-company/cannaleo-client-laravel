@@ -18,7 +18,7 @@
     "require": {
         "php": "^8.3||^8.4",
         "illuminate/contracts": "^11.0||^12.0",
-        "akaunting/laravel-money": "^6.0.2",
+        "prinsfrank/standards": "^3.12",
         "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {

@@ -2,7 +2,6 @@
 
 namespace AmaizingCompany\CannaleoClient\Database\Factories;
 
-use Akaunting\Money\Money;
 use AmaizingCompany\CannaleoClient\Models\PharmacyTransaction;
 use AmaizingCompany\CannaleoClient\Models\PharmacyTransactionProduct;
 use AmaizingCompany\CannaleoClient\Models\Product;
@@ -17,7 +16,7 @@ class PharmacyTransactionProductFactory extends Factory
         return [
             'pharmacy_transaction_id' => PharmacyTransaction::factory(),
             'product_id' => Product::factory(),
-            'price' => Money::EUR(fake()->randomNumber()),
+            'price' => fake()->randomNumber(),
         ];
     }
 }

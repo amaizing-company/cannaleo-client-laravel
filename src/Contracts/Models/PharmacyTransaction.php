@@ -2,10 +2,14 @@
 
 namespace AmaizingCompany\CannaleoClient\Contracts\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
+/**
+ * @mixin Model
+ */
 interface PharmacyTransaction
 {
     public function pharmacy(): BelongsTo;
@@ -19,4 +23,10 @@ interface PharmacyTransaction
     public function doctor(): MorphTo;
 
     public function prescription(): MorphTo;
+
+    public function failed(): static;
+
+    public function pending(): static;
+
+    public function success(): static;
 }

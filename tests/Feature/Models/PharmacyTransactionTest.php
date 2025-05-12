@@ -1,5 +1,6 @@
 <?php
 
+use AmaizingCompany\CannaleoClient\Enums\PharmacyTransactionStatus;
 use AmaizingCompany\CannaleoClient\Models\PharmacyTransaction;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -27,6 +28,17 @@ test('pharmacy transaction has correct table name', function () {
     // Assuming the table name follows Laravel conventions
     expect($transaction->getTable())
         ->toBe('cannaleo_pharmacy_transactions');
+});
+
+// Cast Tests
+test('pharmacy transaction has correct casts', function () {
+    $transaction = new PharmacyTransaction;
+    $casts = $transaction->getCasts();
+
+    expect($casts)
+        ->toBeArray()
+        ->toHaveCount(1)
+        ->status->toBe(PharmacyTransactionStatus::class);
 });
 
 // Relationship Tests
@@ -63,7 +75,7 @@ test('products relationship can be loaded', function () {
     $transaction = PharmacyTransaction::factory()->create();
 
     foreach ($products as $product) {
-        $transaction->products()->attach($product, ['price' => \Akaunting\Money\Money::EUR(100)]);
+        $transaction->products()->attach($product, ['price' => 100]);
     }
 
     expect($transaction->products)
@@ -101,6 +113,7 @@ test('pharmacy transaction accepts all expected attributes', function () {
 
     expect($transaction)
         ->id->toBeString()
+        ->status->toBeInstanceOf(PharmacyTransactionStatus::class)
         ->pharmacy_id->toBeString()
         ->order_type->toBeString()
         ->order_id->toBeString()
@@ -139,6 +152,15 @@ test('pharmacy transaction can be persisted to database', function () {
         ->and($transaction->pharmacy_id)->toBe('pharmacy-1')
         ->and($transaction->order_type)->toBe('standard')
         ->and($transaction->order_id)->toBe('order-1');
+});
+
+test('status can be updated', function () {
+    $transaction = PharmacyTransaction::factory()->create(['status' => PharmacyTransactionStatus::INTENT]);
+
+    expect($transaction)
+        ->pending()->status->toBe(PharmacyTransactionStatus::PENDING)
+        ->success()->status->toBe(PharmacyTransactionStatus::SUCCESS)
+        ->failed()->status->toBe(PharmacyTransactionStatus::FAILED);
 });
 
 // Polymorphic Relationship Type Tests

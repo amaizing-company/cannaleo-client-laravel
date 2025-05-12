@@ -11,6 +11,7 @@ return new class extends Migration
     {
         Schema::create(DatabaseHelper::getTableName('pharmacy_transactions'), function (Blueprint $table) {
             $table->ulid('id')->primary();
+            $table->string('status');
             $table->foreignUlid('pharmacy_id')
                 ->constrained(DatabaseHelper::getTableName('pharmacies'))
                 ->noActionOnDelete();

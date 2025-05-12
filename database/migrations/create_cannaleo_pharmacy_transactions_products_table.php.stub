@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->foreignUlid('pharmacy_transaction_id')
                 ->constrained(DatabaseHelper::getTableName('pharmacy_transactions'));
             $table->foreignUlid('product_id')->constrained(DatabaseHelper::getTableName('products'));
-            $table->json('price');
+            $table->integer('price');
             $table->timestamps();
         });
     }

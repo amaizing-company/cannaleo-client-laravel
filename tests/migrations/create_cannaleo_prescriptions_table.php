@@ -12,6 +12,8 @@ return new class extends Migration
         Schema::create(DatabaseHelper::getTableName('prescriptions'), function (Blueprint $table) {
             $table->ulid('id')->primary();
             $table->string('path');
+            $table->string('signature_city');
+            $table->timestamp('signature_date');
             $table->timestamps();
         });
     }
