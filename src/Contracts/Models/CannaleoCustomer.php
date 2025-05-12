@@ -3,7 +3,11 @@
 namespace AmaizingCompany\CannaleoClient\Contracts\Models;
 
 use AmaizingCompany\CannaleoClient\Api\DataObjects\RequestObjects\AddressObject;
+use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @mixin Model
+ */
 interface CannaleoCustomer
 {
     public function getFirstName(): string;
