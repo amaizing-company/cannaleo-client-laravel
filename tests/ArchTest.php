@@ -9,10 +9,12 @@ use AmaizingCompany\CannaleoClient\Contracts\Models\Pharmacy;
 use AmaizingCompany\CannaleoClient\Contracts\Models\PharmacyTransaction;
 use AmaizingCompany\CannaleoClient\Contracts\Models\Product;
 use AmaizingCompany\CannaleoClient\Contracts\Models\Terpen;
+use AmaizingCompany\CannaleoClient\Contracts\Services\SyncService as SyncServiceContract;
 use AmaizingCompany\CannaleoClient\Models\BaseModel;
 use AmaizingCompany\CannaleoClient\Models\PharmacyTransactionProduct;
 use AmaizingCompany\CannaleoClient\Models\ProductTerpen;
-use AmaizingCompany\CannaleoClient\Services\SyncService;
+use AmaizingCompany\CannaleoClient\Services\PrescriptionTransactionService;
+use AmaizingCompany\CannaleoClient\Services\RequestService;
 use AmaizingCompany\CannaleoClient\Services\SyncServices\SyncService;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -147,12 +149,22 @@ arch('product terpen model implements productTerpenContract interface')
     ->toImplement(\AmaizingCompany\CannaleoClient\Contracts\Models\ProductTerpen::class);
 
 arch()
-    ->expect('AmaizingCompany\CannaleoClient\Services')
+    ->expect('AmaizingCompany\CannaleoClient\Services\SyncServices')
     ->toBeClasses()
-    ->not->toBeAbstract()->ignoring(SyncService::class)
-    ->toImplement(\AmaizingCompany\CannaleoClient\Contracts\Services\SyncService::class)
-    ->ignoring(SyncService::class);
+    ->not->toBeAbstract()->ignoring([SyncService::class])
+    ->toImplement(SyncServiceContract::class)
+    ->ignoring([SyncService::class]);
 
 arch()
     ->expect(SyncService::class)
-    ->toBeAbstract();
+    ->toBeAbstract()
+    ->toExtend(RequestService::class);
+
+arch()
+    ->expect(RequestService::class)
+    ->toBeAbstract()
+    ->toHaveMethods(['executeInTransaction', 'logError', 'logResponseError', 'handleResponseError']);
+
+arch()
+    ->expect(PrescriptionTransactionService::class)
+    ->toExtend(RequestService::class);
