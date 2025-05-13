@@ -11,8 +11,17 @@ return new class extends Migration {
         Schema::create(DatabaseHelper::getTableName('pharmacy_transactions_products'), function (Blueprint $table) {
             $table->ulid('id')->primary();
             $table->foreignUlid('pharmacy_transaction_id')
-                ->constrained(DatabaseHelper::getTableName('pharmacy_transactions'));
-            $table->foreignUlid('product_id')->constrained(DatabaseHelper::getTableName('products'));
+                ->constrained(
+                    DatabaseHelper::getTableName('pharmacy_transactions'),
+                    'id',
+                    'cannaleo_ptp_pt_id_foreign'
+                );
+            $table->foreignUlid('product_id')
+                ->constrained(
+                    DatabaseHelper::getTableName('products'),
+                    'id',
+                    'cannaleo_ptp_product_id_foreign'
+                );
             $table->integer('price');
             $table->timestamps();
         });

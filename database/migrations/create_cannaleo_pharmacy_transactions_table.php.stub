@@ -18,7 +18,7 @@ return new class extends Migration
             $table->ulidMorphs('order');
             $table->ulidMorphs('customer');
             $table->ulidMorphs('doctor');
-            $table->ulidMorphs('prescription');
+            $table->ulidMorphs('prescription', 'cannaleo_pt_prescription_type_id_index');
             $table->timestamps();
         });
     }
