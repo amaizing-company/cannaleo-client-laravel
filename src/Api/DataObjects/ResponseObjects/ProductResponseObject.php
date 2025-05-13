@@ -148,7 +148,7 @@ class ProductResponseObject extends DataResponseObject
 
     public function getTerpenes(): array
     {
-        return $this->terpenes;
+        return $this->terpenes ?? [];
     }
 
     public function isIrradiated(): bool

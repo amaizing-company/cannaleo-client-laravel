@@ -170,31 +170,22 @@ product catalog, always run the pharmacies sync service. Otherwise some products
 
 #### Pharmacies
 ```php
-use AmaizingCompany\CannaleoClient\Api\Requests\PharmaciesRequest;
-use AmaizingCompany\CannaleoClient\Services\SyncServices\PharmaciesSyncService;
+use AmaizingCompany\CannaleoClient\Facades\CannaleoClient
 
-$request = new PharmaciesRequest();
-$service = new PharmaciesSyncService($request);
-
-$service->sync();
-
+CannaleoClient::syncPharmacies();
 ```
 
 #### Product Catalog
 ```php
-use AmaizingCompany\CannaleoClient\Api\Requests\CatalogRequest;
-use AmaizingCompany\CannaleoClient\Services\SyncServices\CatalogSyncService;
+use AmaizingCompany\CannaleoClient\Facades\CannaleoClient
 
-$request = new CatalogRequest();
-$service = new CatalogSyncService($request);
-
-$service->sync();
-
+CannaleoClient::syncCatalog();
 ```
 
 ### Transferring a prescription to a pharmacy
 
 ```php
+use AmaizingCompany\CannaleoClient\Facades\CannaleoClient
 use AmaizingCompany\CannaleoClient\Models\Product;
 use AmaizingCompany\CannaleoClient\Services\PrescriptionTransactionService;
 
@@ -204,7 +195,7 @@ $productModel = Product::query()->first();
 $products = \Illuminate\Support\Collection::make();
 $products->add($productModel->getProductObject(quantity: 1))
 
-$service = new PrescriptionTransactionService(
+CannaleoClient::sendPrescription(
     $pharmacy, // Pharmacy Model
     $prescription, // Prescription Model
     $customer, // Customer Model
@@ -212,8 +203,6 @@ $service = new PrescriptionTransactionService(
     $order, // Order Model
     $products
 );
-
-$service->handle();
 ```
 
 ## Testing
