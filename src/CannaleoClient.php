@@ -31,7 +31,7 @@ class CannaleoClient
      */
     public function syncCatalog(): void
     {
-        $request = new CatalogRequest();
+        $request = new CatalogRequest;
         $service = new CatalogSyncService($request);
 
         $service->sync();
@@ -42,7 +42,7 @@ class CannaleoClient
      */
     public function syncPharmacies(): void
     {
-        $request = new PharmaciesRequest();
+        $request = new PharmaciesRequest;
         $service = new PharmaciesSyncService($request);
 
         $service->sync();
@@ -58,8 +58,7 @@ class CannaleoClient
         CannaleoDoctor $doctor,
         CannaleoOrder $order,
         Collection $products
-    ): void
-    {
+    ): void {
         $service = new PrescriptionTransactionService(
             $pharmacy,
             $prescription,

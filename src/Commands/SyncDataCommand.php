@@ -26,7 +26,7 @@ class SyncDataCommand extends Command
         }
 
         $this->newLine();
-        $this->info("Sync data successfully completed.");
+        $this->info('Sync data successfully completed.');
 
         return Command::SUCCESS;
     }
