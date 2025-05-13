@@ -28,7 +28,7 @@ class CannaleoClientServiceProvider extends PackageServiceProvider
                 'create_cannaleo_pharmacies_table',
                 'create_cannaleo_terpenes_table',
                 'create_cannaleo_products_table',
-                'create_cannaleo_product_terpenes_table',
+                'create_cannaleo_products_terpenes_table',
                 'create_cannaleo_pharmacy_transactions_table',
                 'create_cannaleo_pharmacy_transactions_products_table'
             )
