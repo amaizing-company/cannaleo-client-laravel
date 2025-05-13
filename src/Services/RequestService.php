@@ -12,6 +12,9 @@ abstract class RequestService
 {
     protected Request $request;
 
+    /**
+     * @throws Throwable
+     */
     protected function executeInTransaction(callable $callback): void
     {
         try {

@@ -6,6 +6,7 @@ use AmaizingCompany\CannaleoClient\Api\Contracts\Request;
 use AmaizingCompany\CannaleoClient\Services\RequestService;
 use Exception;
 use Illuminate\Support\Collection;
+use Throwable;
 
 abstract class SyncService extends RequestService
 {
@@ -22,6 +23,9 @@ abstract class SyncService extends RequestService
         $this->seenIds = [];
     }
 
+    /**
+     * @throws Throwable
+     */
     public function sync(): void
     {
         $this->reset();
